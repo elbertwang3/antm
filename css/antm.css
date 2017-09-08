@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'YourFontName'; /*a name to be used later*/
+    src: url('http://domain.com/fonts/font.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'YourFontName'; /*a name to be used later*/
+    src: url('http://domain.com/fonts/font.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'YourFontName'; /*a name to be used later*/
+    src: url('http://domain.com/fonts/font.ttf'); /*URL to font*/
+}
+svg {
+	position: block;
+}
+circle {
+  fill: #64bdff;
+  fill: #00d0a1;
+  fill-opacity: .25;
+  stroke: rgb(31, 119, 180);
+  stroke-width: 1px;
+}
+
+text {
+	font-family: 'Avenir Next';
+	font-size: 14px;
+}
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+}
+
+.head {
+	text-align:center;
+
+}
+.headline {
+	display:inline-block;
+	width: 650px;
+	margin-top: 5%;
+
+}
+
+h1 {
+	font-family: 'Helvetica Neue';
+	font-weight: bold;
+	font-size: 40px;
+
+}
+
+h2 {
+	font-family: 'Helvetica Neue';
+	color: grey;
+	font-size: 20px;
+
+}
+
+h3 {
+	text-align: center;
+	font-family: 'Helvetica Neue';
+	font-weight: bold;
+	font-size: 24px;
+}
+h4 {
+	font-family: 'Avenir Next';
+	font-size: 14px;
+
+}
+
+
+h5 {
+	text-align: center;
+	font-family: 'Helvetica Neue';
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.content {
+ 	margin-top: 30px;
+}
+.article {
+	width: 1000px;
+	display: inline-block;
+}
+
+
+
+.graph {
+	display: block;
+	margin-top: 30px;
+}
+p {
+	font-family: Garamond;
+	font-size: 16px;
+	text-align: left;
+	padding-left: 275px;
+	padding-right: 275px;
+}
+
+.leaf circle {
+  fill: #64bdff;
+  fill-opacity: 1;
+}
+
+svg.text {
+  font: 9px Avenir;
+  text-anchor: middle;
+}
+
+/*#bubblesgraph {
+	height: 600px;
+}*/
+#statesgraph {
+	align: left;
+}
+.states {
+  fill: none;
+  stroke: grey;
+  stroke-linejoin: round;
+}
+
+
+.state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+#calloutgraph {
+	display: inline-block;
+}
+
+.line {
+  fill: none;
+  stroke: red;
+  stroke-width: 0.5;
+  pointer-events: all;
+}
+
+.line:hover{
+    stroke:steelblue;
+    stroke-width: 2;
+}
+

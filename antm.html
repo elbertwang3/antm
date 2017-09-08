@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="How to spot a frontrunner on ANTM">
+	    <meta name="author" content="Elbert Wang">
+	    <meta http-equiv="pragma" content="no-cache" />
+
+	    <title> How to spot a frontrunner on ANTM</title>
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	    <link href="css/antm.css" rel="stylesheet">
+	    
+  	</head>
+  	<body>
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popsper.js, then Bootstrap JS -->
+    	 
+	   
+    	<div class="wrapper">
+   			<div class="head">
+				<div class="headline">
+					<h1>How to spot a frontrunner on America's Next Top Model</h1>
+					<h2> What I learned from analyzing all 23 cycles</h4>
+					<br>
+					<h4> by Elbert Wang </h6>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="article">
+					<p> TyTy's back, baby. After 22 <strike>seasons</strike> cycles of America's Next Top model, the CW network cancelled the long-running series at the end of 2015 due to dwindling ratings. When VH1 revived the series a year later, singer Rita Ora took over as head judge for cycle 23. But the show just wasn't the same. Tyra was the face and heart of the franchise, and fans <a href="images/rootingforyou.gif">begged for her to come back</a>. Now she's reprising her role as head judge for Cycle 24. In honor of her return, I've decided to comb through 23 cycles and 296 contestants worth of data, reliving every tearful exit and crowning of a new model along with them. </p>
+
+					<p> In the beginning, ANTM seemed like an earnest attempt in launching the careers of <a href="images/undiscovered.gif">undiscovered supermodels</a>. However, over the course of 14 years, it's dubious whether ANTM <a href="http://gawker.com/5942709/americas-next-top-model-winner-caridee-english-describes-how-sucky-it-is-to-win-antm">has actually helped produce successful models</a>. Still, the show is such a staple of reality TV that it has become ingrained in pop culture. Every week, America tuned in to see what Tyra might <a href="images/tyrafaint.gif">do</a> <a href="images/tongue.gif">next</a> or what <a href="images/smize.gif">new</a> <a href="images/bootytooch.gif">word</a> she might make up. But part of the original appeal of the show was watching tall, gangly ugly ducklings transform into models in a matter of weeks. Each week, contestants participated in challenges and photoshoots, and their performance determined whether they stayed or went home. Most importantly, they also received a call-out order at panel, providing me with all the quantitative data I need to figure out exactly what it takes to be <a href="images/ontop.gif">on top</a>. </p>
+						
+					<h3> A Survey </h3>
+					<p> Contestants usually apply to the show through by sending in a video audition or attending a casting call, but some were scouted from Myspace, at a homeless shelter, and even from an ice cream truck. However they were found, their fates all fall into neatly defined categories. </p>
+
+					<div class="graph" id="bubblesgraph">
+						<h5> The outcome of every ANTM contestant</h5>
+						<p> Most contestants end up being eliminated at panel, which at the time may seem like the end of the world and their modeling careers, but as they say, <a href="https://www.youtube.com/watch?v=X_POQOE-kyY"> one end is a new beginning</a>. Despite some contestants <a href="https://youtu.be/lKd5heULJGY?t=166">vowing to win the competition</a>, only 7.8% of the contestants make it out on top. Cycle 1's Elyse <a href="images/modelingcontract.gif">put it best</a>. Others were not so lucky. Some were eliminated in a challenge outside of panel, Cycle 21's Romeo was disqualified for <a href="images/headbump.gif">a physical altercation</a>, and Cycle 17's Angelea won her cycle only to be disqualified for her past as an escort. Others even quit the competition, deciding that modeling wasn't for them or because they <a href="https://www.youtube.com/watch?v=220PxtwO9QI">refused a makeover</a>.
+						<svg id="bubbles" width="500" height="360"></svg>	
+
+					</div>
+					<div class="graph" id="statesgraph">
+						<h5> Where the girls come from </h5>
+						<p> This is <i>America's</i> Next Top Model, after all. California is the most represented state overall, but rural North Dakota and Arkansas have had two winners apiece. Almost all states have been represented on the show, barring Maine, Mississippi, Montana, Nebraska, New Hampshire, Rhode Island, Utah, Vermont, West Virginia, and Wyoming. Half the contestants on Cycle 18: British Invasion were from the UK, and they have been omitted.</p>
+						<svg id="states" width="1000" height="650"></svg>
+				
+					</div>
+
+					<h3> Eliminations </h3>
+					<div class="graph" id="calloutgraph">
+					</div>
+					<h3> The First Call-out Advantage </h3>
+					graph mapping girls with most first callouts to their final result
+
+					will callout order save you when you're in bottom two? which % of girls go home wiht lower callout order vs higher callout order
+
+					graph the first callout advantage: same as 538
+					table will look like:
+						has had a FCO	hasn't had FCO
+					wk1   cum chance elim 					%
+					wk2
+					wk3...
+
+					by cycle
+					chance of surviving that long by chance: 1-(0.1 + (0.9*1/9) + (0.9*0.8/8)  +(0.9*0.8*0.7/0.7)...)
+					chance of surviving that long with first callout: dictionary mapping where FCOs place
+					{Ebony: x, Elyse: x, Shannon: x, Adrianne: x}
+					then chance of surviving that long = # FCOs who placed at least 4 / total FCOs
+
+
+					<h3> The Dreaded Bottom Two </h3>
+						<div class="graph">
+							<h5> Is an early bottom two a death sentence? </h5>
+							graph with the result of first bottom 2 girls here
+							no, but a consecutive bottom two is
+
+						</div>
+						<div class="graph">
+							<h5> Stuck in the bottom two </h5>
+							graph with bottom two survival rates here
+							surviving 1 bottom 2: % --> 
+							winners who never saw the bottom 2?
+
+					<h3> What I took away </h3>
+					Winners are not always the frontrunners
+					bottom two two weeks in a row = bye, unforgivable
+					missing a photoshoot = bye
+
+
+				</div>
+				
+				
+			</div>
+		
+		</div>
+
+	    <script src="https://d3js.org/d3.v4.min.js"></script>
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+		<script src="https://d3js.org/topojson.v2.min.js"></script>
+	    <script src="js/bubbles.js"></script>
+	   	<script src="js/states.js"></script>
+	   	<script src="js/callouts.js"></script>
+	
+  	</body>
+</html>
