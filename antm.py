@@ -19,16 +19,16 @@ def mostFCOplace():
 	for row in rows:
 		if row[0] == 23:
 			cycle.append([row[0], row[1], row[2:14].count(1)])
-		elif row[0] == 24:
-			#print cycle
-			maxFCO = max(cycle, key=lambda x: x[2])[2]
-			print maxFCO
 			print cycle
-			maxcontestants = [x for x in cycle if maxFCO == x[2]]
-			print maxcontestants
-			for contestant in maxcontestants:
-				writer.writerow(contestant)
-			break
+		elif row[0] == 23:
+			print cycle
+	maxFCO = max(cycle, key=lambda x: x[2])[2]
+	print maxFCO
+	print cycle
+	maxcontestants = [x for x in cycle if maxFCO == x[2]]
+	print maxcontestants
+	for contestant in maxcontestants:
+		writer.writerow(contestant)
 
 
 if __name__ == "__main__":
