@@ -5,7 +5,8 @@ from collections import defaultdict
 def main():
 
 	#mostFCOplace()
-	whogoeshome()
+	#whogoeshome()
+	chanceofsurviving()
 
 def mostFCOplace():
 	file1 = open('data/callouts.csv', 'rU')
@@ -72,6 +73,38 @@ def whogoeshome():
 	#break
 
 
+
+def chanceofsurviving():
+	numcontestants = [10,12,14,14,13,13,13,13,13,14,14,13,15,13,14,14,14,14,13,16,14,14,14]
+	matrix = np.zeros([23,16])
+	for i in range(len(numcontestants)):
+		a = np.ones(16)
+		for j in range(numcontestants[i]):
+			a[16-numcontestants[i]+j] = 1 - ((float(1)/float(numcontestants[i]))*j)
+		#print a
+		matrix[i] = a
+	newmatrix = np.zeros([16,])
+	for i in range(len(newmatrix)):
+		avg = np.average(matrix[:,i])
+		newmatrix[i] = avg
+	print newmatrix
+
+
+	file1 = open('data/callouts.csv', 'rU')
+	reader = csv.reader(file1)
+	file2 = open('allFCO.csv', 'a')
+	writer = csv.writer(file2)
+	writer.writerow(['cycle', 'contestant', 'place'])
+	next(reader)
+	rows = [[int(row[0]), row[1], int(row[2]), int(row[3]), int(row[4]), int(row[5]), int(row[6]), int(row[7]), 
+	int(row[8]), int(row[9]), int(row[10]), int(row[11]), int(row[12]), int(row[13])] for row in reader]
+
+	allFCO = []
+	for row in rows:
+		if 1 in row[2:]:
+			allFCO.append(row[0:2])
+			writer.writerow(row[0:2])
+	print allFCO
 
 
 
