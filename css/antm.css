@@ -11,8 +11,15 @@
     src: url('http://domain.com/fonts/font.ttf'); /*URL to font*/
 }
 svg {
-	position: block;
+	display: block;
+	margin: auto;
 }
+
+.calloutgraphs {
+	display: inline-block;
+}
+
+
 circle {
   fill: #64bdff;
   fill: #00d0a1;
@@ -47,6 +54,7 @@ h1 {
 	font-family: 'Helvetica Neue';
 	font-weight: bold;
 	font-size: 40px;
+	text-align: center;
 
 }
 
@@ -54,6 +62,7 @@ h2 {
 	font-family: 'Helvetica Neue';
 	color: grey;
 	font-size: 20px;
+	text-align: center;
 
 }
 
@@ -81,8 +90,23 @@ h5 {
  	margin-top: 30px;
 }
 .article {
-	width: 1000px;
+	width: 1500px;
 	display: inline-block;
+}
+
+.tooltip {
+	position: absolute;			
+    text-align: center;			
+    width: auto;					
+    height: auto;					
+    padding: 2px;				
+    font-family: 'Avenir Next';	
+    font-color: black;
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;	
+    z-index: 1000;	
 }
 
 
@@ -95,8 +119,9 @@ p {
 	font-family: Garamond;
 	font-size: 16px;
 	text-align: left;
-	padding-left: 275px;
-	padding-right: 275px;
+	padding-left: 475px;
+	padding-right: 525px;
+	margin-bottom: 25px;
 }
 
 .leaf circle {
@@ -137,7 +162,7 @@ svg.text {
 
 .line {
   fill: none;
-  stroke: red;
+  stroke: #64bdff;
   stroke-width: 0.5;
   pointer-events: all;
 }
@@ -145,5 +170,9 @@ svg.text {
 .line:hover{
     stroke:steelblue;
     stroke-width: 2;
+}
+
+.placecircles {
+  fill: #64bdff;
 }
 

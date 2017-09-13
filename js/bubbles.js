@@ -31,6 +31,9 @@ bubbles.append("text")
   .attr('y', 300)
   .text("Quit")
 
+var bubbletip = d3.select("#bubblesgraph").append("div")  
+        .attr("class", "tooltip");
+
 
 d3.json("data/bubbles.json", function(error, root) {
   if (error) throw error;
@@ -43,10 +46,15 @@ d3.json("data/bubbles.json", function(error, root) {
     .data(pack(root).descendants())
     .enter().append("g")
       .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .on("mouseover", function(d) {
+            bubbletip.html(d.data.name)
+             .style("left", (d3.event.pageX) + "px")    
+                   .style("top", (d3.event.pageY - 28) + "px")
+                   .style("opacity", "1");
+          })
 
-  node.append("title")
-      .text(function(d) { return d.data.name; });
+
 
   node.filter(function(d){ return d.parent; }).append("circle")
       .attr("r", function(d) { return d.r; });
