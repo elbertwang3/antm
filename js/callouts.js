@@ -122,7 +122,7 @@ function ready(error, d1, d2, data3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13,
 			
 	
 			//console.log(lines[l].x());
-			console.log(data);
+			//console.log(data);
 			gs[i].append("path")
 		      .data([data])
 		      .attr("d", lines[l])
