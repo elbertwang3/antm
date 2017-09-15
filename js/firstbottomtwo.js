@@ -105,8 +105,8 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	//trapezoids
 
 	bottomscale = d3.scaleLinear()
-		.domain(d3.extent(grouped_data, function(d) { return d.value;}))
-		.range([0,100])
+		.domain([0, d3.max(grouped_data, function(d) { return d.value;})])
+		.range([0,150])
 
 	trapezoidgelement = parentsvg
 					.append('g')
@@ -123,22 +123,21 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 
     points = []
     for (var i = 0; i < grouped_data.length; i++) {
-    	if (i == 0) {
-    		topleftcorner = {x: 70, y: 150};
-    		bottomleftcorner = {x: 0, y: 300};
-    	}
-    	else {
-    		topleftcorner = {x: 70 + barwidthscale(grouped_data[i].value), y: 150};
-    		toprightcorner = {x: 70 + barwidthscale(grouped_data[i+1].value, y: 150};
-    		bottomrightcorner = {0 + bottomscale}
-    	}
-    	toprightcorner = topleftcorner.x + barwidthscale(grouped_data[i+1].value)
     	obj = []
-    	obj.push({x: 0, y: 300})
-    	obj.push({x: 70, y: 150})
-    	points.push
+		topleftcorner = {x: 70 + d3.sum(grouped_data.slice(0,i), function(d) { return barwidthscale(d.value);}), y: 151};
+		toprightcorner = {x: 70 + d3.sum(grouped_data.slice(0,i+1), function(d) { return barwidthscale(d.value);}) - 1, y: 151};
+		bottomleftcorner = {x: -125 + d3.sum(grouped_data.slice(0,i), function(d) { return bottomscale(d.value);}), y: 300};
+		bottomrightcorner = {x: -125 + d3.sum(grouped_data.slice(0,i+1), function(d) { return bottomscale(d.value);}) -1 , y: 300};
+		obj.push(bottomleftcorner);
+		obj.push(bottomrightcorner);
+		obj.push(toprightcorner);
+		obj.push(topleftcorner);
+		points.push(obj);
     }
-    var points = [{
+    console.log(points);
+    	
+    	
+    /*var points = [{
         x: 0, y: 300
       },{
         x: 200, y: 200
@@ -146,13 +145,15 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
         x: 101, y: 150
       },{
         x: 70, y: 150
-      }];
+      }];*/
       
-    trapezoidgelement.append('path')
-      .attr("d", polygonline(points) + 'Z')
-      .style("fill", function(d) { return magentascale(d.key)});
-  
-        
+    for (var i = 0; i < grouped_data.length; i++) {
+	    trapezoidgelement.append('path')
+	      .attr("d", polygonline(points[i]) + 'Z')
+	      .style("fill", function(d) { return magentascale(grouped_data[i].key)});
+	}
+	  
+	        
 
 
 	
