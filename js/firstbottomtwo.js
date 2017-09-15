@@ -39,7 +39,13 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	var vis = circlegelement.selectAll("g")
 	    .data(bottomtwopack(bottomtworoot).descendants())
 
-
+	vis.enter()
+		.filter(function(d){ return !d.parent; })
+		.append('circle')
+		.attr("r", function(d) { return d.r; })
+    	.attr("transform", function(d) { console.log(d.children[0].r); return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
+		.style("stroke", "black")
+		.style("fill", "white");
 	vis.enter()
 		.filter(function(d){ return d.parent; })
 		.append('image')
@@ -54,12 +60,5 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
                    .style("top", (d3.event.pageY - 28) + "px")
                    .style("opacity", "1");
           })
-	vis.enter()
-		.filter(function(d){ return !d.parent; })
-		.append('circle')
-		.attr("width", function(d) { return 2*d.r; })
-    	.attr("height", function(d) { return 2*d.r; })
-    	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-		.style("stroke", "black")
-		.style("fill", "black");
+	
 });
