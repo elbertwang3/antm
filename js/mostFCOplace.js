@@ -9,7 +9,7 @@ function processData(data) {
 
 diameter = 250
 parentsvg2 = d3.select("#mostFCOgraph")
-console.log(parentsvg._groups[0][0].clientWidth/2);
+console.log(parentsvg2._groups[0][0].clientWidth/2);
 circlegelement2 = parentsvg2
 					.append('g')
 					.attr('width', diameter)
@@ -49,13 +49,13 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
 		.filter(function(d){ return d.parent; })
 		.append('image')
 		.attr("xlink:href", function(d){
-			return 'images/circlenum1.gif';})
+			return 'images/num1final.png';})
 		.attr("width", function(d) { return 2*d.r; })
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
 	    	console.log("getting moused over");
-            bottomtwotip.html(d.data.contestant)
+            bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle)
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY - 28) + "px")
             .style("opacity", "1");
