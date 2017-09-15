@@ -52,12 +52,11 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
     .enter().append("g")
       .attr("transform", function(d, i) {
       	var offset = d3.sum(grouped_data.slice(0,i), function(d) { return barwidthscale(d.value); })
-      	console.log(offset) 
       	return "translate(" + offset + ",0)"; });
 
    
 	bar.append("rect")
-	    .attr("width", function(d) { console.log(barwidthscale(d.value)); return barwidthscale(d.value) - 1; })
+	    .attr("width", function(d) { return barwidthscale(d.value) - 1; })
 	    .attr("height", barHeight)
 	    .style("fill", function(d) { return magentascale(d.key); });
 
@@ -89,6 +88,7 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
+	    	console.log(d.data.contestant + " from Cycle " + d.data.cycle);
             bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle)
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY) + "px")
@@ -98,7 +98,7 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 		.filter(function(d){ return !d.parent; })
 		.append('circle')
 		.attr("r", function(d) { return d.r; })
-    	.attr("transform", function(d) { console.log(d.children[0].r); return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
+    	.attr("transform", function(d) { return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
 		.style("stroke", "black")
 		.style("fill", "white");
 
@@ -127,7 +127,7 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 		topleftcorner = {x: 70 + d3.sum(grouped_data.slice(0,i), function(d) { return barwidthscale(d.value);}), y: 151};
 		toprightcorner = {x: 70 + d3.sum(grouped_data.slice(0,i+1), function(d) { return barwidthscale(d.value);}) - 1, y: 151};
 		bottomleftcorner = {x: -125 + d3.sum(grouped_data.slice(0,i), function(d) { return bottomscale(d.value);}), y: 300};
-		bottomrightcorner = {x: -125 + d3.sum(grouped_data.slice(0,i+1), function(d) { return bottomscale(d.value);}) -1 , y: 300};
+		bottomrightcorner = {x: -125 + d3.sum(grouped_data.slice(0,i+1), function(d) { return bottomscale(d.value);}) -10, y: 300};
 		obj.push(bottomleftcorner);
 		obj.push(bottomrightcorner);
 		obj.push(toprightcorner);
@@ -135,17 +135,9 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 		points.push(obj);
     }
     console.log(points);
-    	
-    	
-    /*var points = [{
-        x: 0, y: 300
-      },{
-        x: 200, y: 200
-      },{
-        x: 101, y: 150
-      },{
-        x: 70, y: 150
-      }];*/
+
+    //bottom rectangles
+ 
       
     for (var i = 0; i < grouped_data.length; i++) {
 	    trapezoidgelement.append('path')
@@ -153,6 +145,46 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	      .style("fill", function(d) { return magentascale(grouped_data[i].key)});
 	}
 	  
+
+	//bottom rectangles
+	bottomrectangles = parentsvg
+		.append('g')
+		.attr('width', diameter*2)
+		.attr('height', diameter + 100)
+		.attr("transform", "translate(75,400)");
+
+	var bottomrects = bottomrectangles.selectAll("g")
+      .data(grouped_data)
+    .enter().append("g")
+      .attr("transform", function(d, i) {
+      	var offset = d3.sum(grouped_data.slice(0,i), function(d) { return bottomscale(d.value); })
+      	console.log(offset) 
+      	return "translate(" + offset + ",50)"; });
+
+   
+	bottomrects.append("rect")
+	    .attr("width", function(d) { return bottomscale(d.value) - 10; })
+	    .attr("height", 40)
+	    .style("fill", function(d) { return magentascale(d.key); })
+	    .style("stroke", "black");
+
+	bottomrects.append("text")
+      .attr("x", function(d) { return bottomscale(d.value)/2 - 10; })
+      .attr("y", 20)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.value; });
+
+    bottomrects.append("text")
+      .attr("x", function(d) { return bottomscale(d.value)/2 - 15; })
+      .attr("y", -10)
+      .attr("dy", ".35em")
+      .text(function(d) { 
+      	if (d.key == 2) {
+      		return "2nd";
+      	}
+      	else {
+      		return d.key + "th"; }});
+
 	        
 
 
