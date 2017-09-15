@@ -12,7 +12,7 @@ parentsvg = d3.select("#earlybottomtwograph")
 console.log(parentsvg._groups[0][0].clientWidth/2);
 
 
-var bottomtwotip = d3.select("body")
+var bottomtwotip = d3.select("#earlybottomtwo")
 		.append("div")
         .attr("class", "bubbletooltip")
         .style("opacity", 1);
@@ -38,7 +38,7 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	tallrectgelement = parentsvg
 					.append('g')
 					.attr('width', diameter)
-					.attr('height', diameter + 100)
+					.attr('height', 100)
 					.attr("transform", "translate(270,150)");
 
 	barWidth = 35
@@ -74,12 +74,20 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	var bottomtworoot = d3.hierarchy(processData(data))
       .sum(function(d) { return 1; })
 
-	var vis = circlegelement.selectAll("g")
+	var visbubbles = circlegelement.selectAll("g")
 	    .data(bottomtwopack(bottomtworoot).descendants())
 
 	
 	
-	vis.enter()
+	
+	visbubbles.enter()
+		.filter(function(d){ return !d.parent; })
+		.append('circle')
+		.attr("r", function(d) { return d.r; })
+    	.attr("transform", function(d) { return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
+		.style("stroke", "black")
+		.style("fill", "white");
+	visbubbles.enter()
 		.filter(function(d){ return d.parent; })
 		.append('image')
 		.attr("xlink:href", function(d){
@@ -93,14 +101,11 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY) + "px")
             
-          })
-	vis.enter()
-		.filter(function(d){ return !d.parent; })
-		.append('circle')
-		.attr("r", function(d) { return d.r; })
-    	.attr("transform", function(d) { return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
-		.style("stroke", "black")
-		.style("fill", "white");
+          }).on("mouseout", function(d) {		
+            bottomtwotip.transition()		
+                .duration(500)		
+                .style("opacity", "0");	
+        });
 
 	//trapezoids
 
@@ -158,7 +163,6 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
     .enter().append("g")
       .attr("transform", function(d, i) {
       	var offset = d3.sum(grouped_data.slice(0,i), function(d) { return bottomscale(d.value); })
-      	console.log(offset) 
       	return "translate(" + offset + ",50)"; });
 
    

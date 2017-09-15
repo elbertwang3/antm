@@ -135,6 +135,11 @@ function ready(error, d1, d2, data3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13,
                 	 .style("top", (d3.event.pageY - 28) + "px")
                 	 .style("opacity", "0.8")	
 		      })
+		      .on("mouseout", function(d) {		
+            	tip.transition()		
+                .duration(500)		
+                .style("opacity", "0");	
+        });
 		    
 		    //console.log("appended path");
 		}
