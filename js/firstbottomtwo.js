@@ -100,10 +100,13 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
             bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle)
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY) + "px")
+            bottomtwotip.transition()		
+                .duration(200)		
+                .style("opacity", 1);		
             
           }).on("mouseout", function(d) {		
             bottomtwotip.transition()		
-                .duration(500)		
+                .duration(200)		
                 .style("opacity", "0");	
         });
 

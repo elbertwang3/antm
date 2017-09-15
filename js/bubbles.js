@@ -53,7 +53,7 @@ d3.json("data/bubbles.json", function(error, root) {
             bubbletip.html(d.data.name)
              .style("left", (d3.event.pageX) + "px")    
                    .style("top", (d3.event.pageY - 28) + "px")
-                   .style("opacity", "1");
+                 .style("opacity", "1");
           })
       .on("mouseout", function(d) {		
             bubbletip.transition()		
