@@ -2,26 +2,24 @@ function processData(data) {
     var newDataSet = [];
     for(var i = 0; i<data.length; i++) {
         var obj = data[i];
-      	newDataSet.push({cycle: obj.cycle, contestant: obj.contestant, place: obj.place});
+      	newDataSet.push({cycle: obj.cycle, contestant: obj.contestant, FCO: obj.FCO, place: obj.place});
     }
     return {children: newDataSet};
 }
 
 diameter = 250
-parentsvg = d3.select("#earlybottomtwograph")
+parentsvg2 = d3.select("#mostFCOgraph")
 console.log(parentsvg._groups[0][0].clientWidth/2);
-circlegelement = parentsvg
+circlegelement2 = parentsvg2
 					.append('g')
 					.attr('width', diameter)
 					.attr('height', diameter)
 					.attr("transform", "translate(250,0)");
 
-var bottomtwotip = d3.select("body")
-		.append("div")
-        .attr("class", "bubbletooltip")
-        .style("opacity", 1);
+var mostFCOtip = d3.select("#circleggraph").append("div")  
+        .attr("class", "tooltip");
 
-d3.csv("data/firstbottomtwo.csv", function(error, data) {
+d3.csv("data/mostFCOplace.csv", function(error, data) {
 	grouped_data = d3.nest()
 		.key(function(d) { return d.place;})
 		.rollup(function(d) { 
@@ -31,35 +29,36 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	console.log(data);
 	console.log(grouped_data);
 
-	var bottomtwopack = d3.pack()
+	var mostFCOpack = d3.pack()
         .size([diameter, diameter]);
 
-	var bottomtworoot = d3.hierarchy(processData(data))
+	var mostFCOroot = d3.hierarchy(processData(data))
       .sum(function(d) { return 1; })
 
-	var vis = circlegelement.selectAll("g")
-	    .data(bottomtwopack(bottomtworoot).descendants())
+	var vis2 = circlegelement2.selectAll("circle")
+	    .data(mostFCOpack(mostFCOroot).descendants())
 
-	vis.enter()
+	vis2.enter()
 		.filter(function(d){ return !d.parent; })
 		.append('circle')
 		.attr("r", function(d) { return d.r; })
     	.attr("transform", function(d) { console.log(d.children[0].r); return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
 		.style("stroke", "black")
 		.style("fill", "white");
-	vis.enter()
+	vis2.enter()
 		.filter(function(d){ return d.parent; })
 		.append('image')
 		.attr("xlink:href", function(d){
-			return 'images/onephotocircle.png';})
+			return 'images/circlenum1.gif';})
 		.attr("width", function(d) { return 2*d.r; })
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
-            bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle)
+	    	console.log("getting moused over");
+            bottomtwotip.html(d.data.contestant)
             .style("left", (d3.event.pageX) + "px")    
-            .style("top", (d3.event.pageY) + "px")
-            
+            .style("top", (d3.event.pageY - 28) + "px")
+            .style("opacity", "1");
           })
 	
 });

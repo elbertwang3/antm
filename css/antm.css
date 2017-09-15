@@ -105,8 +105,35 @@ h5 {
     background: lightsteelblue;	
     border: 0px;		
     border-radius: 8px;			
-    pointer-events: none;	
-    z-index: 1000;	
+    pointer-events: none;		
+}
+
+.tooltip {
+	position: absolute;			
+    text-align: center;			
+    width: auto;					
+    height: auto;					
+    padding: 2px;				
+    font-family: 'Avenir Next';	
+    font-color: black;
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;		
+}
+
+.bubbletooltip {
+	position: absolute;			
+    text-align: center;			
+    width: auto;					
+    height: auto;					
+    padding: 2px;				
+    font-family: 'Avenir Next';	
+    font-color: 'white';
+    background: #B33097;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;		
 }
 
 
