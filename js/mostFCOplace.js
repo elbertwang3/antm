@@ -13,7 +13,7 @@ console.log(parentsvg2._groups[0][0].clientWidth/2);
 
 
 var mostFCOtip = d3.select("#mostFCO").append("div")  
-        .attr("class", "tooltip");
+        .attr("class", "FCOtooltip");
 
 d3.csv("data/mostFCOplace.csv", function(error, data) {
 	grouped_data = d3.nest()
@@ -92,9 +92,17 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
 	    	console.log("getting moused over");
             mostFCOtip.html(d.data.contestant + " from Cycle " + d.data.cycle)
             .style("left", (d3.event.pageX) + "px")    
-            .style("top", (d3.event.pageY - 28) + "px")
-            .style("opacity", "1");
-          })
+            .style("top", (d3.event.pageY - 28) + "px");
+            mostFCOtip.transition()		
+                .duration(200)		
+                .style("opacity", 1);		
+            
+          }).on("mouseout", function(d) {		
+            mostFCOtip.transition()		
+                .duration(200)		
+                .style("opacity", "0");	
+           });
+          
 
 	//trapezoids
 	bottomscalefco = d3.scaleLinear()

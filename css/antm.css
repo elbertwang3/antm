@@ -123,6 +123,18 @@ h5 {
     pointer-events: none;		
 }
 
+.FCOtooltip {
+	position: absolute;			
+    text-align: center;			
+    width: auto;					
+    height: auto;					
+    padding: 2px;				
+    font-family: 'Avenir Next';	
+    background: #C45E2E;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;
+}
 
 
 .graph {
