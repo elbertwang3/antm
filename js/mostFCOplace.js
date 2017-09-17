@@ -9,7 +9,6 @@ function processDataFCO(data) {
 
 diameter = 250
 parentsvg2 = d3.select("#mostFCOgraph")
-console.log(parentsvg2._groups[0][0].clientWidth/2);
 
 
 var mostFCOtip = d3.select("#mostFCO").append("div")  
@@ -77,7 +76,7 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
 		.filter(function(d){ return !d.parent; })
 		.append('circle')
 		.attr("r", function(d) { return d.r; })
-    	.attr("transform", function(d) { console.log(d.children[0].r); return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
+    	.attr("transform", function(d) { return "translate(" + (d.x+(d.children[0].r)) + "," + (d.y+(d.children[0].r)) + ")"; })
 		.style("stroke", "black")
 		.style("fill", "white");
 	vis2.enter()
@@ -89,7 +88,6 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
-	    	console.log("getting moused over");
             mostFCOtip.html(d.data.contestant + " from Cycle " + d.data.cycle)
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY - 28) + "px");
@@ -135,7 +133,6 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
 		obj.push(topleftcorner);
 		points.push(obj);
     }
-    console.log(points);
 
     //bottom rectangles
  

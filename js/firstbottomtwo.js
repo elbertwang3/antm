@@ -9,7 +9,6 @@ function processData(data) {
 
 diameter = 250
 parentsvg = d3.select("#earlybottomtwograph")
-console.log(parentsvg._groups[0][0].clientWidth/2);
 
 
 var bottomtwotip = d3.select("#earlybottomtwo")
@@ -28,7 +27,6 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	grouped_data = grouped_data.sort(function(x, y){
   		 return d3.ascending(x.key, y.key);
 	})
-	console.log(grouped_data);
 
 	//tall rectangles
 	magentascale = d3.scaleLinear()
@@ -96,7 +94,7 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
-	    	console.log(d.data.contestant + " from Cycle " + d.data.cycle);
+	    	
             bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle)
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY) + "px")
@@ -142,7 +140,6 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
 		obj.push(topleftcorner);
 		points.push(obj);
     }
-    console.log(points);
 
     //bottom rectangles
  

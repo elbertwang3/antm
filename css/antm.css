@@ -41,12 +41,13 @@ text {
 
 .head {
 	text-align:center;
-
+	width: 1440px;
 }
 .headline {
 	display:inline-block;
-	width: 650px;
+	text-align: center;
 	margin-top: 5%;
+	width: 650px;
 
 }
 
@@ -90,8 +91,9 @@ h5 {
  	margin-top: 30px;
 }
 .article {
-	width: 1500px;
+	width: 1440px;
 	display: inline-block;
+	text-align: center;
 }
 
 .tooltip {
@@ -108,6 +110,21 @@ h5 {
     pointer-events: none;		
 }
 
+.toolTip {
+    font-family: 'Avenir Next';
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+}
 
 .bubbletooltip {
 	position: absolute;			
@@ -140,17 +157,18 @@ h5 {
 .graph {
 	display: block;
 	margin-top: 30px;
+	text-align: center;
 }
 p {
 	font-family: Garamond;
 	font-size: 16px;
 	text-align: left;
-	padding-left: 475px;
-	padding-right: 525px;
-	margin-bottom: 25px;
+	display: inline-block;
+	padding-left: 445px;
+	padding-right: 445px;
 }
 
-.leaf circle {
+.leafnode circle {
   fill: #64bdff;
   fill-opacity: 1;
 }
@@ -200,5 +218,9 @@ svg.text {
 
 .placecircles {
   fill: #64bdff;
+}
+
+path.slice{
+	stroke-width:1px;
 }
 

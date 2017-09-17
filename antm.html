@@ -33,6 +33,8 @@
 			<div class="content">
 				<div class="article">
 					<p> TyTy's back, baby. After 22 <strike>seasons</strike> cycles of America's Next Top model, the CW network cancelled the long-running series at the end of 2015 due to dwindling ratings. When VH1 revived the series a year later, singer Rita Ora took over as head judge for cycle 23. But the show just wasn't the same. Tyra was the face and heart of the franchise, and fans <a href="images/rootingforyou.gif">begged for her to come back</a>. Now she's reprising her role as head judge for Cycle 24. In honor of her return, I've decided to comb through 23 cycles and 296 contestants worth of data, reliving every tearful exit and crowning of a new model along with them. </p>
+					<br>
+					<br>
 
 					<p> In the beginning, ANTM seemed like an earnest attempt in launching the careers of <a href="images/undiscovered.gif">undiscovered supermodels</a>. However, over the course of 14 years, it's dubious whether ANTM <a href="http://gawker.com/5942709/americas-next-top-model-winner-caridee-english-describes-how-sucky-it-is-to-win-antm">has actually helped produce successful models</a>. Still, the show is such a staple of reality TV that it has become ingrained in pop culture. Every week, America tuned in to see what Tyra might <a href="images/tyrafaint.gif">do</a> <a href="images/tongue.gif">next</a> or what <a href="images/smize.gif">new</a> <a href="images/bootytooch.gif">word</a> she might make up. But part of the original appeal of the show was watching tall, gangly ugly ducklings transform into models in a matter of weeks. Each week, contestants participated in challenges and photoshoots, and their performance determined whether they stayed or went home. Most importantly, they also received a call-out order at panel, providing me with all the quantitative data I need to figure out exactly what it takes to be <a href="images/ontop.gif">on top</a>. </p>
 						
@@ -53,10 +55,17 @@
 					</div>
 
 					<h3> Eliminations </h3>
+					<p> At the end of every week, contestants attended panel where the esteemed judges <strike>destroyed the self-esteem of</strike> imparted <a href="images/hoefashion.gif">valuable</a>  <a href="images/911.jpg"> modeling</a> <a href="images/hoefashion2.gif"> advice</a> to bright-eyed model wannabes. Each week, the judges eliminated the contestant with the poorest performance. 
+					<h5> The Journey to the Top </h5>
+					<p> Each line of each graph represents one contestant and their journey during their cycle, mapping each week to their call-out order. Performance at each week's photoshoot carries the most weight in determining a contestant's call-out order, but sometimes the judges consider external factors--such as confidence or how badly they want to win the competition--as reasons to rank someone higher or save someone from elimination. If a line is cut short, that contestant was eliminated from the competition that week.<p>
+					<p> In some cycles, the obvious front-runner won the competition, like Ann from Cycle 16 or Nicole from Cycle 13. In other cycles, the front-runner ended up second or third runner-up, like Anya from Cycle 10 or Joanie from Cycle 6. The judges can be unpredictable and fickle, and fans sometimes complain that some contestants </p>
 					<div class="graph" id="calloutgraph">
 					</div>
 					<h3> The First Call-out Advantage </h3>
+					<p> Each week, the judges award the first call-out to the contestant with the best photo that week. Some contestants bumble their way through the photoshoot only to get lucky with an amazing shot, while other contestants solidify their lead by taking consistently good photos from week to week.</p>
 					<div class="graph" id="mostFCO">
+						<h5> How the girl(s) with the most first call-outs of their cycle placed </h5>
+						<p> Below is a graph of the 34 contestants with the most first call-outs of their respective cycles. Some cycles had ties, and all tied contestants have been included in those cases, which is why more than 23 are shown. My theory is that while the winner of each cycle needs to do well at photoshoots, the winner often doesn't have the most first call-outs. In only 11 out of the 23 cycles, the winner either tied with or had the most first call-outs of their cycle. Sometimes, a performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant will sway the judges toward an underdog. </p>
 						<svg id="mostFCOgraph" width='800' height='600'></svg>
 					</div>
 					graph mapping girls with most first callouts to their final result
@@ -64,8 +73,22 @@
 					will callout order save you when you're in bottom two? which % of girls go home wiht lower callout order vs higher callout order
 					whogoeshome.csv
 					
+					<div class="graph" id="FCOdonut">
+						<h5> Th </h5>
+						<p> Below is a donut 
+						<form>
+							<label><input type="radio" name="dataset" id="dataset" value="zero" checked> No first callouts</label>
+							<label><input type="radio" name="dataset" id="dataset" value="one"> One first callout</label>
+							<label><input type="radio" name="dataset" id="dataset" value="one"> Two first callouts</label>
+							<label><input type="radio" name="dataset" id="dataset" value="two"> Three first callouts</label>
+							<label><input type="radio" name="dataset" id="dataset" value="zero" checked> Four first callouts</label>
+							<label><input type="radio" name="dataset" id="dataset" value="one"> Five first callouts</label>
+							<label><input type="radio" name="dataset" id="dataset" value="two"> Six first callouts</label>
+						</form>
 
-					with allFCOs.csv
+						<svg id="FCOdonutgraph" width='900' height='450'></svg>
+					</div>
+					with allFCOs.csv where the options are # FCOs and segments = place
 					https://bl.ocks.org/mbhall88/b2504f8f3e384de4ff2b9dfa60f325e2
 					http://bl.ocks.org/juan-cb/1984c7f2b446fffeedde
 					http://bl.ocks.org/dbuezas/9306799
@@ -83,7 +106,9 @@
 							graph with bottom two survival rates here
 							surviving 1 bottom 2: % --> 
 							surviving 2 bottom 2: % -->
+							numbottwoappearances.csv
 							winners who never saw the bottom 2?
+
 
 					<h3> What I took away </h3>
 					Winners are not always the frontrunners
@@ -108,6 +133,7 @@
 	   	<script src="js/states.js"></script>
 	   	<script src="js/callouts.js"></script>
 	   	<script src="js/mostFCOplace.js"></script>
+	   	<script src="js/FCOdonut.js"></script>
 	   	<script src="js/firstbottomtwo.js"></script>
 	
   	</body>

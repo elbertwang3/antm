@@ -128,8 +128,6 @@ function ready(error, d1, d2, data3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13,
 		      .attr("d", lines[l])
 		      .attr("class", "line")
 		      .on("mouseover", function(data) {
-		      		console.log(data[0]['name']);
-		      		console.log(d3.event.pageX);
      				tip.html(data[0]['name'])
      				 .style("left", (d3.event.pageX) + "px")		
                 	 .style("top", (d3.event.pageY - 28) + "px")
