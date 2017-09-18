@@ -21,7 +21,7 @@ svg {
 
 
 circle {
-  fill: #64bdff;
+
   fill: #00d0a1;
   fill-opacity: .25;
   stroke: rgb(31, 119, 180);
@@ -164,8 +164,8 @@ p {
 	font-size: 16px;
 	text-align: left;
 	display: inline-block;
-	padding-left: 445px;
-	padding-right: 445px;
+	padding-left: 460px;
+	padding-right: 460px;
 }
 
 .leafnode circle {
@@ -221,6 +221,7 @@ svg.text {
 }
 
 path.slice{
-	stroke-width:1px;
+	stroke-width:0.5px;
+	stroke:white;
 }
 
