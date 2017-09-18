@@ -57,7 +57,7 @@
 					<h3> Eliminations </h3>
 					<p> At the end of every week, contestants attended panel where the esteemed judges <strike>destroyed the self-esteem of</strike> imparted <a href="images/hoefashion.gif">valuable</a>  <a href="images/911.jpg"> modeling</a> <a href="images/hoefashion2.gif"> advice</a> to bright-eyed model wannabes. Each week, the judges eliminated the contestant with the poorest performance. 
 					<h5> The Journey to the Top </h5>
-					<p> Each line of each graph represents one contestant and their journey during their cycle, mapping each week to their call-out order. Performance at each week's photoshoot carries the most weight in determining a contestant's call-out order, but sometimes the judges consider external factors--such as confidence or how badly they want to win the competition--as reasons to rank someone higher or save someone from elimination. If a line is cut short, that contestant was eliminated from the competition that week.<p>
+					<p> Each line of each graph represents one contestant and their journey during their cycle, mapping each week to their call-out order. Performance at each week's photoshoot carries the most weight in determining a contestant's call-out order, but sometimes the judges consider external factors--such as confidence or how badly they want to win the competition--as reasons to rank someone higher or save someone from elimination. If a line is cut short, that contestant was eliminated from the competition that week.</p>
 					<p> In some cycles, the obvious front-runner won the competition, like Ann from Cycle 16 or Nicole from Cycle 13. In other cycles, the front-runner ended up second or third runner-up, like Anya from Cycle 10 or Joanie from Cycle 6. The judges can be unpredictable and fickle, and fans sometimes complain that some contestants </p>
 					<div class="graph" id="calloutgraph">
 					</div>
@@ -74,16 +74,18 @@
 					whogoeshome.csv
 					
 					<div class="graph" id="FCOdonut">
-						<h5> Th </h5>
-						<p> Below is a donut 
+						<h5> How many first call-outs does it take to win? </h5>
+						<p> Below, each donut represents all the contestants with x number of first call-outs. Each slice represents a placement, the size of the slice represents how many contestants had that specific placement, and the darker the color of each slice, the farther those contestants made it in the competition. The first call-out for the decision between the winner and the runner-up has been omitted. </p>
+
+						<p> There has been no winner without at least one callout. One first call-out is enough for the judges to notice the potential in a contestant, but it's often not enough to win. Three first-callouts and a contestant is almost guaranteed to get a spot in the final three. Joanie from Cycle 6 and Anya from Cycle 10 had <i> five</i> first call-outs a piece, but still ended up as runner-ups of their respective cycles. Winner Ann Ward from Cycle 16 took her cycle by storm, earning a record five consecutive first call-outs in the first five episodes, and ended up with six total. She is the only one to have earned six first call-outs, not counting the finale.</p>
 						<form>
 							<label><input type="radio" name="dataset" id="dataset" value="0" checked> No first callouts</label>
-							<label><input type="radio" name="dataset" id="dataset" value="1"> One first callout</label>
-							<label><input type="radio" name="dataset" id="dataset" value="2"> Two first callouts</label>
-							<label><input type="radio" name="dataset" id="dataset" value="3"> Three first callouts</label>
-							<label><input type="radio" name="dataset" id="dataset" value="4"> Four first callouts</label>
-							<label><input type="radio" name="dataset" id="dataset" value="5"> Five first callouts</label>
-							<label><input type="radio" name="dataset" id="dataset" value="6"> Six first callouts</label>
+							<label><input type="radio" name="dataset" id="dataset" value="1"> One    </label>
+							<label><input type="radio" name="dataset" id="dataset" value="2"> Two    </label>
+							<label><input type="radio" name="dataset" id="dataset" value="3"> Three   </label>
+							<label><input type="radio" name="dataset" id="dataset" value="4"> Four </label>
+							<label><input type="radio" name="dataset" id="dataset" value="5"> Five </label>
+							<label><input type="radio" name="dataset" id="dataset" value="6"> Six </label>
 						</form>
 
 						<svg id="FCOdonutgraph" width='900' height='450'></svg>

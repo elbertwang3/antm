@@ -33,6 +33,7 @@ var arc = d3.arc()
 	.outerRadius(donutradius * 0.8)
 	.innerRadius(donutradius * 0.4);
 
+
 var legendRectSize = (donutradius * 0.05);
 var legendSpacing = donutradius * 0.02;
 
@@ -57,7 +58,7 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
 	for (var i = 0; i < data.length; i++) {
 		numfirstcallouts[data[i].num].push(data[i]);
 	}
-
+	console.log(numfirstcallouts);
 	for (var i = 0; i < numfirstcallouts.length; i++) {
 		sumnumfirstcallouts.push(d3.nest()
 		.key(function(d) { return +d.place;})
@@ -77,13 +78,14 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
 		}
 	}
 	//console.log(sumnumfirstcallouts)
-	var slice = d3.select(".slices").datum(sumnumfirstcallouts[4]).selectAll("path.slice")
-	        .data(pie);//, function(d){ return d.data.key });
+	var slice = d3.select(".slices").selectAll("path.slice")
+	        .data(pie(sumnumfirstcallouts[0]));//, function(d){ return d.data.key });
 	    slice.enter()
-	        .insert("path")
+	        .append("path")
 	        .style("fill", function(d) { return donutColorScale(d.data.key); })
 	        .attr("class", "slice")
 	        .attr('d',arc)
+	d3.selectAll('path.slice').call(donuttoolTip);
 
 	
 	
@@ -115,11 +117,57 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
             .remove();
 
        	updateSlice.transition().duration(400)
-                .attrTween('d', arcTween);
+            .attrTween('d', arcTween);
+
 
    
 	};
+	function donuttoolTip(selection) {
+		selection.on('mouseover', function (d) {
+			
+			console.log(d);
+            donutsvg.append('text')
+                .attr('class', 'toolCircle')
+                .attr('dy', -15) // hard-coded. can adjust this to adjust text vertical alignment in tooltip
+                .html(function() {
+                	console.log(d.data);
+                	if (d.data.key == 1) {
+                		return d.data.key + "st place"
+                	}
+                	else if (d.data.key == 2) {
+                		return d.data.key + "nd place";
+                	}
+                	else if (d.data.key == 3) {
+                		return d.data.key + "rd place";
+                	}
+                	else {
+                		return d.data.key + "th place";
+                	}
+                }) // add text to the circle.
+                .style('font-size', '.0.45em')
+                .style('text-anchor', 'middle'); // centres text in tooltip
+            donutsvg.append('text')
+                .attr('class', 'toolCircle')
+                .attr('dy', 10) // hard-coded. can adjust this to adjust text vertical alignment in tooltip
+                .html(function() {
+                	
+                		return d.data.value + " contestant(s)";
+                	
+                	
+                }) // add text to the circle.
+                .style('font-size', '.0.45em')
+                .style('text-anchor', 'middle'); // centres text in tooltip
 
+          
+
+        });
+
+        // remove the tooltip when mouse leaves the slice/label
+        selection.on('mouseout', function () {
+            d3.selectAll('.toolCircle').remove();
+        });
+
+	}
 	function key(d) {
         return d.data.key;
     }
@@ -134,4 +182,6 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
         this._current = i(0);
         return function(t) { return arc(i(t)); };
     }
+   
+
 });
