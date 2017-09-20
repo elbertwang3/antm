@@ -58,7 +58,7 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
 	for (var i = 0; i < data.length; i++) {
 		numfirstcallouts[data[i].num].push(data[i]);
 	}
-	console.log(numfirstcallouts);
+	//console.log(numfirstcallouts);
 	for (var i = 0; i < numfirstcallouts.length; i++) {
 		sumnumfirstcallouts.push(d3.nest()
 		.key(function(d) { return +d.place;})
@@ -99,7 +99,7 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
 	
 	change(sumnumfirstcallouts[0]);
 	function change(newdata) {
-		console.log(newdata);
+		//console.log(newdata);
 	   	var updateSlice = d3.select('.slices').selectAll('path.slice');
 	     var data0 = slice.data(), // store the current data before updating to the new
          	data1 = pie(newdata);

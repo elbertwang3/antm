@@ -231,3 +231,7 @@ path.slice{
 	stroke:white;
 }
 
+.forcenode {
+  stroke-width: 1.5px;
+}
+

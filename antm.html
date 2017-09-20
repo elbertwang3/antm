@@ -68,10 +68,13 @@
 						<p> Below is a graph of the 34 contestants with the most first call-outs of their respective cycles. Some cycles had ties, and all tied contestants have been included in those cases, which is why more than 23 are shown. My theory is that while the winner of each cycle needs to do well at photoshoots, the winner often doesn't have the most first call-outs. In only 11 out of the 23 cycles, the winner either tied with or had the most first call-outs of their cycle. Sometimes, a performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant will sway the judges toward an underdog. </p>
 						<svg id="mostFCOgraph" width='800' height='600'></svg>
 					</div>
-					graph mapping girls with most first callouts to their final result
-					mostFCOplace.csv
-					will callout order save you when you're in bottom two? which % of girls go home wiht lower callout order vs higher callout order
+					<div class="graph" id="whogoeshome">
+						<h5> Who goes home? </h5>
+						<svg id="whogoeshomesvg" width='960' height='500'></svg>
+						will callout order save you when you're in bottom two? which % of girls go home wiht lower callout order vs higher callout order
 					whogoeshome.csv
+					</div>
+					
 					
 					<div class="graph" id="FCOdonut">
 						<h5> How many first call-outs does it take to win? </h5>
@@ -135,6 +138,7 @@
 	   	<script src="js/states.js"></script>
 	   	<script src="js/callouts.js"></script>
 	   	<script src="js/mostFCOplace.js"></script>
+	   	<script src="js/whogoeshome.js"></script>
 	   	<script src="js/FCOdonut.js"></script>
 	   	<script src="js/firstbottomtwo.js"></script>
 	
