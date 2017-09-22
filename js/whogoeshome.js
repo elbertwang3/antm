@@ -209,7 +209,7 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
        window.clearInterval(intervalID);
        
    }
-	}, 200);
+	}, 500);
 
 	
 

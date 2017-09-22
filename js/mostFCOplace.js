@@ -88,7 +88,7 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
-            mostFCOtip.html(d.data.contestant + " from Cycle " + d.data.cycle)
+            mostFCOtip.html(d.data.contestant + " from Cycle " + d.data.cycle + " : " + ordinal_suffix_of(d.data.place))
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY - 28) + "px");
             mostFCOtip.transition()		

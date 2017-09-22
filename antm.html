@@ -62,31 +62,20 @@
 					<div class="graph" id="calloutgraph">
 
 					</div>
-					<p> In some cycles, the obvious front-runner won the competition, like Jourdan from Cycle 20 or Nicole from Cycle 13. Other winners had a rockier road to the top, like Lisa from Cycle 17 or  The judges can be unpredictable and fickle, and fans sometimes complain that some contestants </p>
+					<p> In some cycles, the obvious front-runner won the competition, like Jourdan from Cycle 20 or India from Cycle 23. Other winners had a rockier road to the top, like Lisa from Cycle 17 or Brittani from Cycle 16. Some showed steady improvement throughout their cycle, like Saleisha from Cycle 9 or Nicole from Cycle 5, which is what Tyra thinks the show is all about. Each line tells its own story. </p>
 					<h3> The First Call-out Advantage </h3>
 					<p> Each week, the judges award the first call-out to the contestant with the best photo that week. Some contestants bumble their way through the photoshoot only to get lucky with an amazing shot, while other contestants solidify their lead by taking consistently good photos from week to week.</p>
 					<div class="graph" id="mostFCO">
 						<h5> How the girl(s) with the most first call-outs of their cycle placed </h5>
-						<p> Below is a graph of the 34 contestants with the most first call-outs of their respective cycles. Some cycles had ties, and all tied contestants have been included in those cases, which is why more than 23 are shown. My theory is that while the winner of each cycle needs to do well at photoshoots, the winner often doesn't have the most first call-outs. In only 11 out of the 23 cycles, the winner either tied with or had the most first call-outs of their cycle. Sometimes, a performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant will sway the judges toward an underdog. </p>
+						<p> Consistent first-callouts are a sure sign that a contestant is doing well in the competition, so I wanted to explore whether having the most first call-outs in a particular cycle would guarantee the win. Below is a graph of the 34 contestants with the most first call-outs of their respective cycles. Some cycles had ties, and all tied contestants have been included in those cases, which is why more than 23 are shown.</p>
 						<svg id="mostFCOgraph" width='800' height='525'></svg>
+						<p>It turns out that less than half the time (11 out of 23 cycles), the winner also had the most call-outs of the cycle. My theory is that while contestants need to do well at photoshoots to stay in the competition, the winner often isn't the one who takes the best photos, but rather the one who represents the ANTM brand the best. Sometimes, a superior performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant may also sway the judges toward crowning an underdog as the winner. </p>
 					</div>
-					<div class="graph" id="whogoeshome">
-						<h5> Who goes home? </h5>
-						<p> I decided to test whether average call-out order had an effect on which of the two bottom two contestants would be eliminated in any given week; namely, whether having a better average call-out would save a contestant from elimination. I've included 240 eliminations from all the cycles (I've ommitted the first week of each cycle because contestants don't have a prior average call-out in the first week), and these are the results. Contestants who had a better (lower numerical value) call-out order were saved 55.4% of the time, whereas contestants with the worse call-out average was saved 37.9% of the time. In the rest of the cases, contestants had an equal callout average at the time of elimination.</p>
-
-
-						<svg id="whogoeshomesvg" width='960' height='500'></svg>
-						<p> Although having a better average call-out is definitely an advantage when you're in the bottom two, it had less of an effect than I had expected. Sometimes the judges may see a potential in a contestant that has yet to be explored, and they may save a contestant with a poorer past performance for that reason. </p>
-
-						<p> The green bubbles on the left can be interpreted as "unfair" eliminations, especially the ones with a large difference in averages. In Cycle 7, Jaeda and A.J. landed in the bottom two in the 6th episode. Although Jaeda had an average call-out of 7.75 and AJ an average of 3, A.J. ended up going home. Jaeda would end up landing in the bottom two four times. </p>
-					</div>
-					
-					
 					<div class="graph" id="FCOdonut">
 						<h5> How many first call-outs does it take to win? </h5>
-						<p> Below, each donut represents all the contestants with x number of first call-outs. Each slice represents a placement, the size of the slice represents how many contestants had that specific placement, and the darker the color of each slice, the farther those contestants made it in the competition. The first call-out for the decision between the winner and the runner-up has been omitted. </p>
+						<p> Discovering that the winner didn't always have the most first call-outs, I wanted to see how strong of an effect having x first-callouts would have on a contestant's final placement. Below, I used each donut graph to represent all the contestants with x number of first call-outs. Each slice represents a placement, the size of the slice represents the fraction of contesteants with that specific placement, and the darker the color of each slice, the farther those contestants made it in the competition. I have omitted the decision between the winner and the runner-up as a first call-out. </p>
 
-						<p> There has been no winner without at least one callout. One first call-out is enough for the judges to notice the potential in a contestant, but it's often not enough to win. Three first-callouts and a contestant is almost guaranteed to get a spot in the final three. Joanie from Cycle 6 and Anya from Cycle 10 had <i> five</i> first call-outs a piece, but still ended up as runner-ups of their respective cycles. Winner Ann Ward from Cycle 16 took her cycle by storm, earning a record five consecutive first call-outs in the first five episodes, and ended up with six total. She is the only one to have earned six first call-outs, not counting the finale.</p>
+						
 						<form>
 							<label><input type="radio" name="dataset" id="dataset" value="0" checked> No first callouts</label>
 							<label><input type="radio" name="dataset" id="dataset" value="1"> One    </label>
@@ -98,33 +87,45 @@
 						</form>
 
 						<svg id="FCOdonutgraph" width='900' height='450'></svg>
+						<p> There has been no winner without at least one callout. One first call-out is enough for the judges to notice the potential in a contestant, but it's often not enough to win. Three first-callouts and a contestant is almost guaranteed to get a spot in the final three. Joanie from Cycle 6 and Anya from Cycle 10 had <i> five</i> first call-outs a piece, but still ended up as runner-ups of their respective cycles. Ann Ward from Cycle 16 took her cycle by storm, earning a record five consecutive first call-outs in the first five episodes, and ended up with six total. She is the only one to have earned six first call-outs (not counting the finale), and she won her cycle convincigly. </p>
 					</div>
-					with allFCOs.csv where the options are # FCOs and segments = place
-					https://bl.ocks.org/mbhall88/b2504f8f3e384de4ff2b9dfa60f325e2
-					http://bl.ocks.org/juan-cb/1984c7f2b446fffeedde
-					http://bl.ocks.org/dbuezas/9306799
+					<div class="graph" id="whogoeshome">
+						<h5> Who goes home? </h5>
+						<p> I decided to test whether average call-out order had an effect on which of the two bottom two contestants would be eliminated in any given week; namely, whether having a better average call-out would save a contestant from elimination. I included 240 eliminations from all the cycles (I ommitted the first elimination of each cycle because contestants don't have a prior average call-out in the first week), and these are the results: contestants who had a better (lower numerical value) call-out order were saved 55.4% of the time, whereas contestants with the worse call-out average was saved 37.9% of the time. In the rest of the cases, contestants had an equal callout average at the time of elimination. Mouse over each bubble to see the contestants and their call-out averages at the time of their bottom two appearance. </p>
 
+
+						<svg id="whogoeshomesvg" width='960' height='500'></svg>
+						<p> Although having a better average call-out is definitely an advantage when you're in the bottom two, it had less of an effect than I had expected. Sometimes the judges may see  potential in a contestant that has yet to be unlocked, saving that contestant even though they had a poorer past performance out of the two. </p>
+
+						<p> The green bubbles on the left can be interpreted as "unfair" eliminations--especially the ones with a large difference between averages. In Cycle 7, Jaeda and A.J. landed in the bottom two in the 6th episode. Although Jaeda had an average call-out of 7.75 and AJ an average of 3, A.J. ended up going home. Jaeda would end up landing in the bottom two a total of four times. </p>
+					</div>
+					
+					
 
 					<h3> The Dreaded Bottom Two </h3>
 					<div class="graph" id="earlybottomtwo">
 						<h5> Is an early bottom two a death sentence? </h5>
-						<svg id="earlybottomtwograph" width='800' height='600'></svg>
+						<p> In any reality TV competition, the worst thing that can happen is to be eliminated first. That, or being <a href="https://www.youtube.com/watch?v=m6Shpn5WCFs">publicly humiliated by Tyra on national television</a>. The contestants depicted below were in the bottom two the first week of competition, on the brink of elimination, but saved. I wanted to explore whether they ended up being eliminated mere episodes later or whether they lasted in the competition, demonstrating if it was possible for the show to turn amateurs into models. An early bottom two is hard to interpret--it could either signal a model who lacks natural talent and is on their way out, or a model with potential waiting to be discovered in the coming weeks. </p>
+						<svg id="earlybottomtwograph" width='800' height='525'></svg>
 						
-						<p>An early bottom two is hard to interpret--it could either signal a model who lacks natural talent and is on their way out, or a model with potential waiting to be discovered in the coming weeks, like Shannon from Cycle 2 or _____, who landed in the bottom two in the first week. While an early bottom two certainly isn't a death sentence, a consecutive bottom two is. Out of 81 consecutive bottom two appearances, only 26 survive the second bottom two, a 32% chance of survival. Only two models have survived <i>three</i> consecutive bottom twos: Erin from Cycle 13 and Devin from Cycle 22.</p>
+						<p> In 17 out of 23 of the cycles, the contestant saved in the first bottom two ended up being eliminated relatively early on, making it seem difficult to recover from early mistakes. Only 6 out of 23 of the first bottom two contestants made it to the international destination, placing 6th or better. Two--Shannon from Cycle 2 and Melrose from Cycle 7--made it to the finale and placed second, inches away from the crown. Still, while an early bottom two certainly isn't a death sentence, a consecutive bottom two is. Out of 81 consecutive bottom two appearances, only 26 survive the second bottom two, a 32% chance of survival. Only two models have survived <i>three</i> consecutive bottom twos: Erin from Cycle 13 and Devin from Cycle 22.</p>
 					</div>
-						<div class="graph">
-							<h5> Stuck in the bottom two </h5>
+					<div class="graph">
+						<h5> Stuck in the bottom two </h5>
+						<p>
 							graph with bottom two survival rates here
 							surviving 1 bottom 2: % --> 
 							surviving 2 bottom 2: % -->
 							numbottwoappearances.csv
 							winners who never saw the bottom 2?
+						</p>
+					</div>
 
 
 					<h3> What I took away </h3>
-					Winners are not always the frontrunners
+					<p>Winners are not always the frontrunners
 					bottom two two weeks in a row = bye, unforgivable
-					missing a photoshoot = bye
+					missing a photoshoot = bye</p>
 
 
 				</div>

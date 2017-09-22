@@ -7,6 +7,21 @@ function processData(data) {
     return {children: newDataSet};
 }
 
+function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
 diameter = 250
 parentsvg = d3.select("#earlybottomtwograph")
 
@@ -94,8 +109,8 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
     	.attr("height", function(d) { return 2*d.r; })
 	    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	    .on("mouseover", function(d) {
-	    	
-            bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle)
+	    	console.log(d.data);
+            bottomtwotip.html(d.data.contestant + " from Cycle " + d.data.cycle + " : " + ordinal_suffix_of(d.data.place))
             .style("left", (d3.event.pageX) + "px")    
             .style("top", (d3.event.pageY) + "px")
             bottomtwotip.transition()		
