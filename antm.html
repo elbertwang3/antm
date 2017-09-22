@@ -57,22 +57,28 @@
 					<h3> Eliminations </h3>
 					<p> At the end of every week, contestants attended panel where the esteemed judges <strike>destroyed the self-esteem of</strike> imparted <a href="images/hoefashion.gif">valuable</a>  <a href="images/911.jpg"> modeling</a> <a href="images/hoefashion2.gif"> advice</a> to bright-eyed model wannabes. Each week, the judges eliminated the contestant with the poorest performance. 
 					<h5> The Journey to the Top </h5>
-					<p> Each line of each graph represents one contestant and their journey during their cycle, mapping each week to their call-out order. Performance at each week's photoshoot carries the most weight in determining a contestant's call-out order, but sometimes the judges consider external factors--such as confidence or how badly they want to win the competition--as reasons to rank someone higher or save someone from elimination. If a line is cut short, that contestant was eliminated from the competition that week.</p>
-					<p> In some cycles, the obvious front-runner won the competition, like Ann from Cycle 16 or Nicole from Cycle 13. In other cycles, the front-runner ended up second or third runner-up, like Anya from Cycle 10 or Joanie from Cycle 6. The judges can be unpredictable and fickle, and fans sometimes complain that some contestants </p>
+					<p> I wanted to visualize each contestant's journey during their cycle by mapping their line to their call-out order from week to week. Performance at each week's photoshoot usually carries the most weight in determining a contestant's call-out order, but sometimes the judges consider external factors--such as confidence or how badly they want to win the competition--as reasons to rank someone higher or save someone from elimination. If a line is cut short, that contestant was eliminated from the competition that week.</p>
+					
 					<div class="graph" id="calloutgraph">
+
 					</div>
+					<p> In some cycles, the obvious front-runner won the competition, like Jourdan from Cycle 20 or Nicole from Cycle 13. Other winners had a rockier road to the top, like Lisa from Cycle 17 or  The judges can be unpredictable and fickle, and fans sometimes complain that some contestants </p>
 					<h3> The First Call-out Advantage </h3>
 					<p> Each week, the judges award the first call-out to the contestant with the best photo that week. Some contestants bumble their way through the photoshoot only to get lucky with an amazing shot, while other contestants solidify their lead by taking consistently good photos from week to week.</p>
 					<div class="graph" id="mostFCO">
 						<h5> How the girl(s) with the most first call-outs of their cycle placed </h5>
 						<p> Below is a graph of the 34 contestants with the most first call-outs of their respective cycles. Some cycles had ties, and all tied contestants have been included in those cases, which is why more than 23 are shown. My theory is that while the winner of each cycle needs to do well at photoshoots, the winner often doesn't have the most first call-outs. In only 11 out of the 23 cycles, the winner either tied with or had the most first call-outs of their cycle. Sometimes, a performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant will sway the judges toward an underdog. </p>
-						<svg id="mostFCOgraph" width='800' height='600'></svg>
+						<svg id="mostFCOgraph" width='800' height='525'></svg>
 					</div>
 					<div class="graph" id="whogoeshome">
 						<h5> Who goes home? </h5>
+						<p> I decided to test whether average call-out order had an effect on which of the two bottom two contestants would be eliminated in any given week; namely, whether having a better average call-out would save a contestant from elimination. I've included 240 eliminations from all the cycles (I've ommitted the first week of each cycle because contestants don't have a prior average call-out in the first week), and these are the results. Contestants who had a better (lower numerical value) call-out order were saved 55.4% of the time, whereas contestants with the worse call-out average was saved 37.9% of the time. In the rest of the cases, contestants had an equal callout average at the time of elimination.</p>
+
+
 						<svg id="whogoeshomesvg" width='960' height='500'></svg>
-						will callout order save you when you're in bottom two? which % of girls go home wiht lower callout order vs higher callout order
-					whogoeshome.csv
+						<p> Although having a better average call-out is definitely an advantage when you're in the bottom two, it had less of an effect than I had expected. Sometimes the judges may see a potential in a contestant that has yet to be explored, and they may save a contestant with a poorer past performance for that reason. </p>
+
+						<p> The green bubbles on the left can be interpreted as "unfair" eliminations, especially the ones with a large difference in averages. In Cycle 7, Jaeda and A.J. landed in the bottom two in the 6th episode. Although Jaeda had an average call-out of 7.75 and AJ an average of 3, A.J. ended up going home. Jaeda would end up landing in the bottom two four times. </p>
 					</div>
 					
 					
@@ -138,6 +144,7 @@
 	   	<script src="js/states.js"></script>
 	   	<script src="js/callouts.js"></script>
 	   	<script src="js/mostFCOplace.js"></script>
+	   	<script src="js/d3.v3.min.js"></script>
 	   	<script src="js/whogoeshome.js"></script>
 	   	<script src="js/FCOdonut.js"></script>
 	   	<script src="js/firstbottomtwo.js"></script>

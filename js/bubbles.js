@@ -45,8 +45,9 @@ d3.json("data/bubbles.json", function(error, root) {
   var node = g1.selectAll(".node")
     .data(pack(root).descendants())
     .enter().append("g")
-      .attr("class", function(d) { return d.children ? "node" : "leafnode"; })
+      .attr("class", function(d) { return d.children ? "parentnode" : "leafnode"; })
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+
       
   /*node.filter(function(d){ return d.parent; })
   	.on("mouseover", function(d) {
@@ -67,18 +68,18 @@ d3.json("data/bubbles.json", function(error, root) {
 
   d3.selectAll(".leafnode")
    .on("mouseover", function(d) {
-            bubbletip.html(d.data.name)
-             .style("left", (d3.event.pageX) + "px")    
-                   .style("top", (d3.event.pageY - 28) + "px");
-            bubbletip.transition()   
-                .duration(200)     
-                 .style("opacity", "1")
-      })
-      .on("mouseout", function(d) {   
-            bubbletip.transition()    
-                .duration(200)    
-                .style("opacity", "0"); 
-      });
+        bubbletip.html(d.data.name)
+         .style("left", (d3.event.pageX) + "px")    
+               .style("top", (d3.event.pageY - 28) + "px");
+        bubbletip.transition()   
+            .duration(200)     
+             .style("opacity", "1")
+  })
+  .on("mouseout", function(d) {   
+        bubbletip.transition()    
+            .duration(200)    
+            .style("opacity", "0"); 
+  });
 
   /*node.filter(function(d) { return !d.children; }).append("text")
       .attr("dy", "0.3em")

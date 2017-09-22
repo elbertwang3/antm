@@ -1,39 +1,95 @@
-var wghmargin = {top: 100, right: 100, bottom: 100, left: 100};
-
+var wghsvg = d3v3.select('#whogoeshomesvg')
 var wghwidth = 960,
-    wghheight = 500,
-    wghpadding = 1.5, // separation between same-color circles
-    wghclusterPadding = 50, // separation between different-color circles
-    wghmaxRadius = 12;
-    
-var m = 3, // number of distinct clusters
-    z = d3.scaleOrdinal(d3.schemeCategory20),
-    clusters = new Array(m);
+    wghheight = 500;
+wghsvg.append("text")
+		  .attr('x', 50)
+		  .attr('y', 0)
+		    .attr('dy', 20)
+		  .text("The contestant with the better callout average was eliminated.")
+		   .call(wrap, 250)
+		   .style("opacity", 0)
+		   .transition()
+		   .duration(3000)
+		    .style("opacity", 1)
 
-var radiusScale = d3.scaleLinear()
-					.domain([3,13])
-					.range([10,2])
-var wghsvg = d3.select('#whogoeshomesvg')
-    .append('g').attr('transform', 'translate(' + wghwidth / 2 + ',' + wghheight / 2 + ')');
+		wghsvg.append("text")
+		  .attr('x', 380)
+		  .attr('y', 0)
+		  .attr('dy', 20)
+		  .text("Both contestants had equal an call-out average at elimination.")
+		  .call(wrap, 250)
+		   .style("opacity", 0)
+		   .transition()
+		   .duration(3000)
+		    .style("opacity", 1);
+		wghsvg.append("text")
+		  .attr('x', 670)
+		  .attr('y', 0)
+		    .attr('dy', 20)
+		  .text("The contestant with the worse callout average was eliminated.")
+		   .call(wrap, 250)
+		    .style("opacity", 0)
+		   .transition()
+		   .duration(3000)
+		    .style("opacity", 1);
+/*wghsvg.append("text")
+	.attr("class", "toplabel")
+	.attr("x", 480)
+	.attr("y", 20)
+	.text("hello");*/
 
+var wghtip = wghsvg.append("text")  
+				.attr("x", wghwidth/2)    
+                  .attr("y", 20)
+                 .attr("text-anchor", "middle")
+
+var wghtip2 = wghsvg.append("text")  
+				.attr("x", wghwidth/2)    
+                  .attr("y", 40)
+                 .attr("text-anchor", "middle")
+
+function wrap(text, width) {
+	console.log(text);
+	  text.each(function() {
+	    var text = d3.select(this),
+	        words = text.text().split(/\s+/).reverse(),
+	        word,
+	        line = [],
+	        lineNumber = 0,
+	        lineHeight = 1.1, // ems
+	        x = text.attr("x")
+	        y = text.attr("y"),
+	        dy = parseFloat(text.attr("dy")),
+	        tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+	    while (word = words.pop()) {
+	      line.push(word);
+	      tspan.text(line.join(" "));
+	      if (tspan.node().getComputedTextLength() > width) {
+	        line.pop();
+	        tspan.text(line.join(" "));
+	        line = [word];
+	        tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+	      }
+	    }
+	  })};
 d3.csv('data/whogoeshome.csv', function(error,d) {
 
 	var data = d.map(function(x) {  
 		//return {x.eliminated, +x.eliminatedavg, x.bottomtwo, +x.bottomtwoavg};
 		return {eliminated: x.eliminated, eliminatedavg: +x.eliminatedavg, bottomtwo: x.bottomtwo, bottomtwoavg: +x.bottomtwoavg};
 	})
-	console.log(data);
+	//console.log(data);
 	var elimlesscount = 0;
 	var elimmorecount = 0;
 	var equalcount = 0;
-	var wghnodes = d3.range(d.length).map((j) => {
+	/*var wghnodes = d3.range(d.length).map((j) => {
 			//console.log(data[j]);
 			var i;
 
 			if (data[j].eliminatedavg < data[j].bottomtwoavg) {
 				i = 0;
 				elimlesscount += 1;
-				console.log(data[j])
+				
 			}
 			else if (data[j].eliminatedavg == data[j].bottomtwoavg) {
 				i = 2;
@@ -46,110 +102,134 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 			}
    
 	        //var radius = radiusScale((data[j].eliminatedavg + data[j].bottomtwoavg)/2);
-	        radius = Math.sqrt((i + 1) / m * -Math.log(Math.random())) * wghmaxRadius,
-	        console.log("radius:" + radius);
-	        var d = {cluster: i, r: radius, eliminated: data[j].eliminated, bottomtwo: data[j].bottomtwo};
-	    if (!clusters[i] || (radius > clusters[i].r)) clusters[i] = d;
-	    return d;
+	        radius = Math.sqrt((i + 1) / m * -Math.log(Math.random())) * wghmaxRadius;
+	        //console.log("radius:" + radius);
+	        var wghd = {cluster: i, r: radius, eliminated: data[j].eliminated, bottomtwo: data[j].bottomtwo};
+	    if (!clusters[i] || (radius > clusters[i].r)) clusters[i] = wghd;
+	    return wghd;
 	});
-	console.log(elimlesscount);
-	console.log(elimmorecount);
-	console.log(equalcount);
+	*/
 
-	var wghcircles = wghsvg.append('g')
-	      .datum(wghnodes)
-	    .selectAll('.circle')
-	      .data(d => d)
-	    .enter().append('circle')
-	      .attr('r', (d) => d.r)
-	      .attr('fill', (d) => z(d.cluster))
-	      .attr('stroke', 'black')
-	      .attr('stroke-width', 1)
-	      .call(d3.drag()
-	        .on("start", dragstarted)
-	        .on("drag", dragged)
-	        .on("end", dragended));    
+	
 
-	var simulation = d3.forceSimulation(wghnodes)
-	    .velocityDecay(0.2)
-	    .force("x", d3.forceX().strength(.0005))
-	    .force("y", d3.forceY().strength(.0005))
-	    .force("collide", collide)
-	    .force("cluster", clustering)
-	    .on("tick", ticked);
-	function ticked() {
-	    wghcircles
-	        .attr('cx', (d) => d.x)
-	        .attr('cy', (d) => d.y);
-	}   
+	var fill = d3v3.scale.category10();
 
-	// These are implementations of the custom forces.
-	function clustering(alpha) {
-	    wghnodes.forEach(function(d) {
-	      var cluster = clusters[d.cluster];
-	      if (cluster === d) return;
-	      var x = d.x - cluster.x,
-	          y = d.y - cluster.y,
-	          l = Math.sqrt(x * x + y * y),
-	          r = d.r + cluster.r;
-	      if (l !== r) {
-	        l = (l - r) / l * alpha;
-	        d.x -= x *= l;
-	        d.y -= y *= l;
-	        cluster.x += x;
-	        cluster.y += y;
-	      }  
-	    });
-	}
+	var nodes = [],
+	    foci = [{x: 240, y: 250}, {x: 520, y: 250}, {x: 720, y: 250}];
 
-	function collide(alpha) {
-	  var quadtree = d3.quadtree()
-	      .x((d) => d.x)
-	      .y((d) => d.y)
-	      .addAll(wghnodes);
+	
 
-	  wghnodes.forEach(function(d) {
-	    var r = d.r + wghmaxRadius + Math.max(wghpadding, wghclusterPadding),
-	        nx1 = d.x - r,
-	        nx2 = d.x + r,
-	        ny1 = d.y - r,
-	        ny2 = d.y + r;
-	    quadtree.visit(function(quad, x1, y1, x2, y2) {
 
-	      if (quad.data && (quad.data !== d)) {
-	        var x = d.x - quad.data.x,
-	            y = d.y - quad.data.y,
-	            l = Math.sqrt(x * x + y * y),
-	            r = d.r + quad.data.r + (d.cluster === quad.data.cluster ? wghpadding : wghclusterPadding);
-	        if (l < r) {
-	          l = (l - r) / l * alpha;
-	          d.x -= x *= l;
-	          d.y -= y *= l;
-	          quad.data.x += x;
-	          quad.data.y += y;
-	        }
-	      }
-	      return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
-	    });
+	
+
+	var force = d3v3.layout.force()
+	    .nodes(nodes)
+	    .links([])
+	    .gravity(0)
+	    .size([wghwidth, wghheight])
+	    .on("tick", tick);
+
+	var node = wghsvg.selectAll("circle");
+
+	function tick(e) {
+	  var k = .1 * e.alpha;
+
+	  // Push nodes toward their designated focus.
+	  nodes.forEach(function(o, i) {
+	    o.y += (foci[o.id].y - o.y) * k;
+	    o.x += (foci[o.id].x - o.x) * k;
 	  });
+
+	  node
+	      .attr("cx", function(d) { return d.x; })
+	      .attr("cy", function(d) { return d.y; });
 	}
 
-	function dragstarted(d) {
-	    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-	    d.fx = d.x;
-	    d.fy = d.y;
-	}
+	var ic = 0
+	var intervalID = setInterval(function(){
+		var id = determineId(ic)
+	
+		//console.log(id);
+		nodeobj = {id: id, eliminated: data[ic].eliminated, eliminatedavg: +data[ic].eliminatedavg, bottomtwo: data[ic].bottomtwo, bottomtwoavg: +data[ic].bottomtwoavg};
+	  nodes.push(nodeobj);
+	  force.start();
 
-	function dragged(d) {
-	    d.fx = d3.event.x;
-	    d.fy = d3.event.y;
-	}
+	  node = node.data(nodes);
 
-	function dragended(d) {
-	    if (!d3.event.active) simulation.alphaTarget(0);
-	    d.fx = null;
-	    d.fy = null;
-	} 
+	  node.enter().append("circle")
+	      .attr("class", "node")
+	      .attr("cx", function(d) { return d.x; })
+	      .attr("cy", function(d) { return d.y; })
+	      .attr("r", 6)
+	      .style("fill", function(d) { return fill(d.id); })
+	      .style("stroke", function(d) { return d3v3.rgb(fill(d.id)).darker(2); })
+	      .call(force.drag)
+	      .on("mouseover", function(d) {
+	      	console.log(d);
+            wghtip.html("Who was eliminated: " + d.eliminated + " - " + Math.round(d.eliminatedavg * 100) / 100)
+          
+            wghtip.transition()   
+                .duration(300)     
+                 .style("opacity", "1")
+            wghtip2.html("Who was saved: " + d.bottomtwo + " - " + Math.round(d.bottomtwoavg * 100) / 100)
+          
+            wghtip2.transition()   
+                .duration(300)     
+                 .style("opacity", "1")
+
+      })
+      .on("mouseout", function(d) {   
+            wghtip.transition()    
+                .duration(500)    
+                .style("opacity", "0"); 
+                wghtip2.transition()    
+                .duration(500)    
+                .style("opacity", "0"); 
+      });
+
+
+
+      /*d3.select(".toplabel")
+      .transition()
+       .style("opacity", 0)
+		.text("");*/
+			          
+		/*d3.select(".toplabel")
+          .style("opacity", 0)
+          .text(data[ic].eliminated)
+        .transition()
+       
+          .style("opacity", 1)*/
+        
+    
+	       
+
+	  if (++ic === data.length) {
+	  	console.log(ic);
+       window.clearInterval(intervalID);
+       
+   }
+	}, 200);
+
+	
+
+
+	
+	function determineId(intervalcounter) {
+		if (data[intervalcounter].eliminatedavg < data[intervalcounter].bottomtwoavg) {		
+			elimlesscount += 1;
+			return 0;
+		}
+		else if (data[intervalcounter].eliminatedavg == data[intervalcounter].bottomtwoavg) {
+			equalcount += 1;
+			return 1;
+		}
+		else {
+			elimmorecount += 1;
+			return 2;
+		}
+	}
 });
+
 
 

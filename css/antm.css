@@ -20,13 +20,13 @@ svg {
 }
 
 
-circle {
+/*.bubble {
 
-  fill: #00d0a1;
+  fill: #64bdff;
   fill-opacity: .25;
   stroke: rgb(31, 119, 180);
   stroke-width: 1px;
-}
+}*/
 
 text {
 	font-family: 'Avenir Next';
@@ -173,11 +173,23 @@ p {
 input[type="radio"]{
   margin: 0 5px 0 10px;
 }
+.parentnode circle {
 
-.leafnode circle {
-  fill: #64bdff;
-  fill-opacity: 1;
+	 fill: #00d0a1;
+  fill-opacity: .25;
+  stroke: rgb(31, 119, 180);
+  stroke-width: 1px;
 }
+.leafnode circle {
+   
+  	fill: #64bdff;
+  	fill-opacity: 1;
+
+  stroke: rgb(31, 119, 180);
+  stroke-width: 1px;
+
+}
+
 
 svg.text {
   font: 9px Avenir;
