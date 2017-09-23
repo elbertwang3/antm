@@ -71,13 +71,13 @@ var dragRight = d3v3.behavior.drag()
          })
 
 //Tool tip for Prob
-var tipCP = d3v3.tip()
+var tipCP = d3tip.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d,i) { 
                 var prob = calcOverlap(i,currentPerspective)/(xWidthCP.domain()[1]);
                 return Math.round(prob * 100) / 100;});
-var tipBall = d3v3.tip()
+var tipBall = d3tip.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d,i) { 

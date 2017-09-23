@@ -6,7 +6,7 @@
 // Public - contructs a new tooltip
 //
 // Returns a tip
-d3v3.tip = function() {
+d3tip.tip = function() {
   var direction = d3_tip_direction,
       offset    = d3_tip_offset,
       html      = d3_tip_html,
