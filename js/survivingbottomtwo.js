@@ -215,10 +215,12 @@ function start() {
     if (++ic === data.length) {
        window.clearInterval(interval);
       }
-  }, 1000);
+  }, 100);
 }
 function stop() {
   clearInterval(interval);
+  d3v3.select(".ball").selectAll("circle").remove();
+  
 }
 
 //Handles start and stop buttons
