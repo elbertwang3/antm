@@ -71,13 +71,13 @@ var dragRight = d3v3.behavior.drag()
          })
 
 //Tool tip for Prob
-var tipCP = d3tip.tip()
+var tipCP = d3.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d,i) { 
                 var prob = calcOverlap(i,currentPerspective)/(xWidthCP.domain()[1]);
                 return Math.round(prob * 100) / 100;});
-var tipBall = d3tip.tip()
+var tipBall = d3.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d,i) { 
@@ -105,7 +105,7 @@ var circles = containerBallCP.append("g").attr("class", "ball")
 //Prob SVG elements
 var probEvents = containerProbCP.selectAll('g.event').data(eventsData).enter().append('g').attr('class', 'event');
 
-var probRects = probEvents.append('rect').attr('class', function(d){ return (d.name + ' probability') }).on("mouseover", function(d,i) { tipCP.show(d,i);}).on("mouseout", function() { tipCP.hide();});;
+var probRects = probEvents.append('rect').attr('class', function(d){ return (d.name + ' probability') }).on("mouseover", function(d,i) { tipCP.show(d,i,this);}).on("mouseout", function() { tipCP.hide();});;
 
 var probAxis = containerProbCP.append("g").attr("class", "x axis");
 
@@ -191,7 +191,7 @@ function addBall(data, data2, ic){
   var circle = g.append('circle')
                 .attr('r', radius)
                 .attr('cy', function(){ return yScaleCP(0) })
-                .on("mouseover", function(d,i) { tipBall.show(d,i);}).on("mouseout", function() { tipBall.hide();});;
+                .on("mouseover", function(d,i) { tipBall.show(d,i,this);}).on("mouseout", function() { tipBall.hide();});;
 
   pos.forEach(function(d, i){
     if(i === 0) return
