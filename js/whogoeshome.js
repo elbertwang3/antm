@@ -49,7 +49,6 @@ var wghtip2 = wghsvg.append("text")
                  .attr("text-anchor", "middle")
 
 function wrap(text, width) {
-	console.log(text);
 	  text.each(function() {
 	    var text = d3.select(this),
 	        words = text.text().split(/\s+/).reverse(),

@@ -10,8 +10,10 @@ def main():
 	#chanceofsurviving()
 	#atleastplace()
 	#firstbottomtwo()
-	consecbottomtwo()
+	#consecbottomtwo()
 	#bottomtwomap()
+	
+
 
 def consecbottomtwo():
 	file1 = open('data/callouts.csv', 'rU')
