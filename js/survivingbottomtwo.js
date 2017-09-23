@@ -8,13 +8,9 @@ d3.csv('data/numbottwoappearances.csv', function(data) {
       freq[num]++;
         
     }
-    console.log(freq);
   var sumall = freq.reduce(add,0);
-  console.log(sumall);
 var currentPerspective = 'universe'
 var radius = 5;
-console.log(freq.slice(0,1).reduce(add,0)/sumall);
-console.log((1-(freq.slice(0,1).reduce(add,0)))/sumall);
 var eventsData = [
         { x: 0, y: 0.1, width: 1, height: 0.05, name: 'zero' },
         { x: freq.slice(0,1).reduce(add,0)/sumall, y: 0.25, width: 1-(freq.slice(0,1).reduce(add,0)/sumall), height: 0.05, name: 'one' },
@@ -81,6 +77,12 @@ var tipCP = d3v3.tip()
               .html(function(d,i) { 
                 var prob = calcOverlap(i,currentPerspective)/(xWidthCP.domain()[1]);
                 return Math.round(prob * 100) / 100;});
+var tipBall = d3v3.tip()
+              .attr('class', 'd3-tip')
+              .offset([-10, 0])
+              .html(function(d,i) { 
+                console.log(d);
+                return "Cycle " + d["cycle"] + ": " + d["contestant"];})
 
 //Ball SVG elements
 var events = containerBallCP.selectAll('g.event').data(eventsData).enter().append('g').attr('class', 'event');
@@ -148,12 +150,19 @@ function updateRects(dur) {
 
   //calcIndependence();
 }
+function calcP(data) {
+  numappearances = data["number"]
 
+  var min = freq.slice(0,numappearances).reduce(add,0)/sumall
+  var max = freq.slice(0,numappearances+1).reduce(add,0)/sumall
+ return Math.random() * (max - min) + min;
+}
 //Drops ball randomly from 0 to 1
-function addBall(data){
+function addBall(data, data2, ic){
   //console.log(data);
   var dur = 2500;
-  var p = Math.random();
+  //var p = Math.random();
+  var p = calcP(data2[ic]);
   var pos = [{t: 0}, {t: 1}];
   var a, b, c, dd, e, f, events = [];
   var bisector = d3v3.bisector(function(d){ return d.t }).right
@@ -176,12 +185,13 @@ function addBall(data){
   if(dd) events.push(dd)
   if(e) events.push(e)
   if(f) events.push(f)
-  console.log(events);
-  var g = circles.append('g').datum({p: p, events: events })
+  //console.log(events);
+  var g = circles.append('g').datum({p: p, events: events, cycle: data2[ic]["cycle"], contestant: data2[ic]["contestant"], number: data2[ic]["number"] })
       .attr('transform', function(d){return 'translate(' + xScaleCP(d.p) + ',0)'})
   var circle = g.append('circle')
                 .attr('r', radius)
-                .attr('cy', function(){ return yScaleCP(0) });
+                .attr('cy', function(){ return yScaleCP(0) })
+                .on("mouseover", function(d,i) { tipBall.show(d,i);}).on("mouseout", function() { tipBall.hide();});;
 
   pos.forEach(function(d, i){
     if(i === 0) return
@@ -199,8 +209,12 @@ function addBall(data){
 //Start and Stop ball sampling
 var interval;
 function start() {
+  var ic = 0
   interval = setInterval(function() { 
-    addBall(eventsData);
+    addBall(eventsData, data, ic);
+    if (++ic === data.length) {
+       window.clearInterval(interval);
+      }
   }, 1000);
 }
 function stop() {
@@ -324,8 +338,8 @@ function drawCP() {
   var padding = 20;
 
   //Update svg size
-  svgBallCP.attr("width", w).attr("height", h);
-  svgProbCP.attr("width", wProb).attr("height", hProb).call(tipCP);;
+  svgBallCP.attr("width", w).attr("height", h).call(tipBall);
+  svgProbCP.attr("width", wProb).attr("height", hProb).call(tipCP);
 
   //Update Clip Path
   clipCP.attr("x", 0).attr("y", 0).attr("width", w-2*padding).attr("height", h-2*padding);

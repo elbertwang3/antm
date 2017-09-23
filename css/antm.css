@@ -260,32 +260,27 @@ path.slice{
 .zero {
   fill: #FF9B3C;
   color: #FF9B3C;
-  stroke: #FF9B3C;
+
 }
 .one {
   fill: #00d0a1;
   color: #00d0a1;
-  stroke: #00d0a1;
 }
 .two {
   fill: #64bdff;
   color: #64bdff;
-  stroke: #64bdff;
 }
 .three {
   fill: #EF6F6C;
   color: #EF6F6C;
-  stroke: #EF6F6C;
 }
 .four {
   fill: #987284;
   color: #987284;
-  stroke: #987284;
 }
 .five {
   fill: #FC440F;
   color: #FC440F;
-  stroke: #FC440F;
 }
 /*.A.B {
   fill: #FFFF00;
