@@ -1,4 +1,4 @@
-var wghsvg = d3v3.select('#whogoeshomesvg')
+var wghsvg = d3v3.select('#whogoeshomesvg').attr("class", "ballz");
 var wghwidth = 960,
     wghheight = 500;
 wghsvg.append("text")
@@ -111,7 +111,9 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 
 	
 
-	var fill = d3v3.scale.category10();
+	var fill = d3v3.scale.linear()
+		.domain([0,1,2])
+		.range(['#FF9B3C', '#00d0a1', '#64bdff'])
 
 	var nodes = [],
 	    foci = [{x: 240, y: 250}, {x: 520, y: 250}, {x: 720, y: 250}];
@@ -128,7 +130,7 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 	    .size([wghwidth, wghheight])
 	    .on("tick", tick);
 
-	var node = wghsvg.selectAll("circle");
+	var node2 = wghsvg.selectAll("circle")
 
 	function tick(e) {
 	  var k = .1 * e.alpha;
@@ -139,23 +141,33 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 	    o.x += (foci[o.id].x - o.x) * k;
 	  });
 
-	  node
+	  node2
 	      .attr("cx", function(d) { return d.x; })
 	      .attr("cy", function(d) { return d.y; });
 	}
-
-	var ic = 0
-	var intervalID = setInterval(function(){
-		var id = determineId(ic)
+	var intervalID;
+	var ic2;
+	function start() {
+	ic2 = 0;
+	nodes = []
+		var force = d3v3.layout.force()
+	    .nodes(nodes)
+	    .links([])
+	    .gravity(0)
+	    .size([wghwidth, wghheight])
+	    .on("tick", tick);
+	console.log(nodes);
+	intervalID = setInterval(function(){
+		var id = determineId(ic2)
 	
 		//console.log(id);
-		nodeobj = {id: id, eliminated: data[ic].eliminated, eliminatedavg: +data[ic].eliminatedavg, bottomtwo: data[ic].bottomtwo, bottomtwoavg: +data[ic].bottomtwoavg};
+		nodeobj = {id: id, eliminated: data[ic2].eliminated, eliminatedavg: +data[ic2].eliminatedavg, bottomtwo: data[ic2].bottomtwo, bottomtwoavg: +data[ic2].bottomtwoavg};
 	  nodes.push(nodeobj);
 	  force.start();
 
-	  node = node.data(nodes);
+	  node2 = node2.data(nodes);
 
-	  node.enter().append("circle")
+	  node2.enter().append("circle")
 	      .attr("class", "node")
 	      .attr("cx", function(d) { return d.x; })
 	      .attr("cy", function(d) { return d.y; })
@@ -186,7 +198,7 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
                 .style("opacity", "0"); 
       });
 
-
+  
 
       /*d3.select(".toplabel")
       .transition()
@@ -203,16 +215,21 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
     
 	       
 
-	  if (++ic === data.length) {
-	  	console.log(ic);
+	  if (++ic2 === data.length) {
+	  	console.log(ic2);
        window.clearInterval(intervalID);
+       setTimeout(stopInt, 5000);
        
-   }
-	}, 500);
-
+       
+  	 }
+	}, 300);
+}
 	
 
-
+	function stopInt() {
+		 d3.select(".ballz").selectAll("circle").remove();
+       start();
+	}
 	
 	function determineId(intervalcounter) {
 		if (data[intervalcounter].eliminatedavg < data[intervalcounter].bottomtwoavg) {		
@@ -228,6 +245,7 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 			return 2;
 		}
 	}
+	start();
 });
 
 

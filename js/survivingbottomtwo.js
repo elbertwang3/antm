@@ -23,14 +23,14 @@ var mapper = {0: "P(A)", 1: "P(B)", 2: "P(C)"};
 
 //Create SVG
 var svgBallCP = d3v3.select('#svgBallCP').append('svg');
-var svgProbCP = d3v3.select('#svgProbCP').append('svg');
+//var svgProbCP = d3v3.select('#svgProbCP').append('svg');
 
 //Create Clip Path
 var clipCP = svgBallCP.append("clipPath").attr("id", "viewCP").append("rect");
 
 //Create Container
 var containerBallCP = svgBallCP.append('g').attr("clip-path", "url(#viewCP)");
-var containerProbCP = svgProbCP.append('g');
+//var containerProbCP = svgProbCP.append('g');
   
 //Create Scales
 var xScaleCP = d3v3.scale.linear().domain([0, 1]);
@@ -42,7 +42,7 @@ var yScaleProbCP = d3v3.scale.linear().domain([0, 1]);
 
 
 //Drag Functions
-var dragRect = d3v3.behavior.drag()
+/*var dragRect = d3v3.behavior.drag()
          .origin(function() { return {x: d3v3.select(this).attr("x"),y:0};})
          .on('dragstart', function(){d3v3.select(this.parentNode).moveToFront();}) 
          .on('drag', function(d,i) {
@@ -69,7 +69,7 @@ var dragRight = d3v3.behavior.drag()
             changePerspective(currentPerspective);
             updateRects(0);
          })
-
+*/
 //Tool tip for Prob
 var tipCP = d3.tip()
               .attr('class', 'd3-tip')
@@ -87,11 +87,9 @@ var tipBall = d3.tip()
 //Ball SVG elements
 var events = containerBallCP.selectAll('g.event').data(eventsData).enter().append('g').attr('class', 'event');
 
-var rects = events.append('rect').attr('class', function(d){ return (d.name + ' shelf') }).call(dragRect);
+var rects = events.append('rect').attr('class', function(d){ return (d.name + ' shelf') }).on("mouseover", function(d,i) { tipCP.show(d,i,this);}).on("mouseout", function() { tipCP.hide();});
 
-var leftBorders = events.append('line').attr('class', function(d){ return (d.name + ' border') }).call(dragLeft);
 
-var rightBorders = events.append('line').attr('class', function(d){ return (d.name + ' border') }).call(dragRight);
 
 var texts = events.append('text').text(function(d){ 
   if (d.name != "four" && d.name != "five" && d.name != "three") {
@@ -103,13 +101,13 @@ var texts = events.append('text').text(function(d){
 var circles = containerBallCP.append("g").attr("class", "ball")
 
 //Prob SVG elements
-var probEvents = containerProbCP.selectAll('g.event').data(eventsData).enter().append('g').attr('class', 'event');
+/*var probEvents = containerProbCP.selectAll('g.event').data(eventsData).enter().append('g').attr('class', 'event');
 
-var probRects = probEvents.append('rect').attr('class', function(d){ return (d.name + ' probability') }).on("mouseover", function(d,i) { tipCP.show(d,i,this);}).on("mouseout", function() { tipCP.hide();});;
+var probRects = probEvents.append('rect').attr('class', function(d){ return (d.name + ' probability') })
 
 var probAxis = containerProbCP.append("g").attr("class", "x axis");
 
-var xAxis = d3v3.svg.axis().scale(xScaleProbCP).orient("bottom").tickFormat(function (d) { return mapper[d]});
+var xAxis = d3v3.svg.axis().scale(xScaleProbCP).orient("bottom").tickFormat(function (d) { return mapper[d]});*/
 
 
 
@@ -119,9 +117,9 @@ function updateRects(dur) {
     .attr('x', function(d){ return xScaleCP(d.x) })
     .attr('y', function(d){ return yScaleCP(d.y) })
     .attr('width', function(d){ return xWidthCP(d.width) })
-    .attr('height', function(d){ return yScaleCP(d.height) });
+    .attr('height', function(d){ return yScaleCP(d.height) }).call(tipCP);
 
-  leftBorders.transition().duration(dur)
+  /*leftBorders.transition().duration(dur)
     .attr('x1', function(d){ return xScaleCP(d.x) })
     .attr('y1', function(d){ return yScaleCP(d.y) })
     .attr('x2', function(d){ return xScaleCP(d.x) })
@@ -131,7 +129,7 @@ function updateRects(dur) {
     .attr('x1', function(d){ return xScaleCP(d.x+d.width) })
     .attr('y1', function(d){ return yScaleCP(d.y) })
     .attr('x2', function(d){ return xScaleCP(d.x+d.width) })
-    .attr('y2', function(d){ return yScaleCP(d.y+d.height) });
+    .attr('y2', function(d){ return yScaleCP(d.y+d.height) });*/
 
   texts.transition().duration(dur)
     .attr('x', function(d){ return xScaleCP(d.x + d.width/2) })
@@ -142,11 +140,11 @@ function updateRects(dur) {
       .attr('transform', function(d){return 'translate(' + xScaleCP(d.p) + ',0)'});
   })
 
-  probRects.transition().duration(dur)
+  /*probRects.transition().duration(dur)
     .attr('x', function(d,i){ return xScaleProbCP(i); })
     .attr('y', function(d,i){ return yScaleProbCP(calcOverlap(i,currentPerspective)/xWidthCP.domain()[1]); })
     .attr('width', function(d,i){ return xScaleProbCP.rangeBand(); })
-    .attr('height', function(d,i){ return yScaleProbCP(1-calcOverlap(i,currentPerspective)/xWidthCP.domain()[1]); });
+    .attr('height', function(d,i){ return yScaleProbCP(1-calcOverlap(i,currentPerspective)/xWidthCP.domain()[1]); });*/
 
   //calcIndependence();
 }
@@ -208,26 +206,29 @@ function addBall(data, data2, ic){
 
 //Start and Stop ball sampling
 var interval;
+var ic;
 function start() {
-  var ic = 0
+  ic = 0;
   interval = setInterval(function() { 
     addBall(eventsData, data, ic);
     if (++ic === data.length) {
-       window.clearInterval(interval);
+      console.log("doneee");
+        clearInterval(interval);
+       setTimeout(stopfunc, 5000);
       }
-  }, 100);
+  }, 300);
 }
-function stop() {
-  clearInterval(interval);
+function stopfunc() {
+
   d3v3.select(".ball").selectAll("circle").remove();
-  
+  start();
 }
 
 //Handles start and stop buttons
 $('.ballBtns').on('click', function(){
   var button = d3v3.select(this).attr('id');
   if(button=='start') start();
-  if(button=='stop')  stop();
+  if(button=='stop')  stopfunc();
   $('#start').toggle();
   $('#stop').toggle(); 
 })
@@ -263,7 +264,7 @@ function changePerspective(p){
     currentPerspective = 'universe';
     mapper = {0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5"};
   }
-  probAxis.call(xAxis);
+  //probAxis.call(xAxis);
 }
 
 
@@ -341,14 +342,14 @@ function drawCP() {
 
   //Update svg size
   svgBallCP.attr("width", w).attr("height", h).call(tipBall);
-  svgProbCP.attr("width", wProb).attr("height", hProb).call(tipCP);
+  //svgProbCP.attr("width", wProb).attr("height", hProb);
 
   //Update Clip Path
   clipCP.attr("x", 0).attr("y", 0).attr("width", w-2*padding).attr("height", h-2*padding);
 
   //Update Container
   containerBallCP.attr("transform", "translate(" + padding + "," + padding + ")");
-  containerProbCP.attr("transform", "translate(" + padding + "," + padding + ")");
+  //containerProbCP.attr("transform", "translate(" + padding + "," + padding + ")");
 
   //Update Scale Range
   xScaleCP.range([0, (w - 2*padding)]);
@@ -359,7 +360,7 @@ function drawCP() {
   yScaleProbCP.range([hProb-2*padding, 0]);
 
   //Update Axis
-  probAxis.attr("transform", "translate(" + 0 + "," + (hProb-2*padding+1) + ")").call(xAxis);
+  //probAxis.attr("transform", "translate(" + 0 + "," + (hProb-2*padding+1) + ")").call(xAxis);
 
   //Update Rectangles
   changePerspective(currentPerspective);

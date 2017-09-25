@@ -43,7 +43,7 @@ var donutTip = d3.select("#FCOdonut")
 
 var donutColorScale = d3.scaleLinear()
 	.domain([1,16])
-	.range(["#08306b", "white"]);
+	.range(["#003761", "white"]);
 
 
 
