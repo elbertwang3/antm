@@ -1,7 +1,6 @@
 d3.csv('data/numbottwoappearances.csv', function(data) {
   //console.log(data);
   data = data.map(function(d) { return {cycle: d.cycle, contestant: d.contestant, number: +d.number}})
-  console.log(data);
   var freq = [0,0,0,0,0,0];
   for (var i = 0; i < data.length; i++) {
     var num = data[i].number;
@@ -81,7 +80,6 @@ var tipBall = d3.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d,i) { 
-                console.log(d);
                 return "Cycle " + d["cycle"] + ": " + d["contestant"];})
 
 //Ball SVG elements
@@ -212,7 +210,6 @@ function start() {
   interval = setInterval(function() { 
     addBall(eventsData, data, ic);
     if (++ic === data.length) {
-      console.log("doneee");
         clearInterval(interval);
        setTimeout(stopfunc, 5000);
       }
@@ -225,13 +222,13 @@ function stopfunc() {
 }
 
 //Handles start and stop buttons
-$('.ballBtns').on('click', function(){
+/*$('.ballBtns').on('click', function(){
   var button = d3v3.select(this).attr('id');
   if(button=='start') start();
   if(button=='stop')  stopfunc();
   $('#start').toggle();
   $('#stop').toggle(); 
-})
+})*/
 
 //Handle Perspective Buttons
 $('.perspective').on('click', function(){

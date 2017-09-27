@@ -156,7 +156,7 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 	    .gravity(0)
 	    .size([wghwidth, wghheight])
 	    .on("tick", tick);
-	console.log(nodes);
+
 	intervalID = setInterval(function(){
 		var id = determineId(ic2)
 	
@@ -176,7 +176,6 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 	      .style("stroke", function(d) { return d3v3.rgb(fill(d.id)).darker(2); })
 	      .call(force.drag)
 	      .on("mouseover", function(d) {
-	      	console.log(d);
             wghtip.html("Who was eliminated: " + d.eliminated + " - " + Math.round(d.eliminatedavg * 100) / 100)
           
             wghtip.transition()   
@@ -216,7 +215,6 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 	       
 
 	  if (++ic2 === data.length) {
-	  	console.log(ic2);
        window.clearInterval(intervalID);
        setTimeout(stopInt, 5000);
        
