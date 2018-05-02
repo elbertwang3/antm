@@ -12,7 +12,8 @@ parentsvg2 = d3.select("#mostFCOgraph")
 
 
 var mostFCOtip = d3.select("#mostFCO").append("div")  
-        .attr("class", "FCOtooltip");
+        .attr("class", "FCOtooltip")
+        .style("opacity", "0");	;
 
 d3.csv("data/mostFCOplace.csv", function(error, data) {
 	grouped_data = d3.nest()
@@ -189,3 +190,12 @@ d3.csv("data/mostFCOplace.csv", function(error, data) {
 
 	
 });
+
+var mfchart = $("#mostFCOgraph"),
+    mfaspect = mfchart.width() / mfchart.height(),
+    mfcontainer = mfchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = mfcontainer.width();
+    mfchart.attr("width", targetWidth);
+    mfchart.attr("height", Math.round(targetWidth / mfaspect));
+}).trigger("resize");

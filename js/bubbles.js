@@ -86,6 +86,15 @@ d3.json("data/bubbles.json", function(error, root) {
       .text(function(d) { return d.data.name.substring(0, d.r/2.3); });*/
 });
 
+var bchart = $("#bubbles"),
+    baspect = bchart.width() / bchart.height(),
+    bcontainer = bchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = bcontainer.width();
+    bchart.attr("width", targetWidth);
+    bchart.attr("height", Math.round(targetWidth / baspect));
+}).trigger("resize");
+
 
 
 

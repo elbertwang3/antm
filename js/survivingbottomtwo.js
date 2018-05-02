@@ -21,7 +21,10 @@ var eventsData = [
 var mapper = {0: "P(A)", 1: "P(B)", 2: "P(C)"};
 
 //Create SVG
-var svgBallCP = d3v3.select('#svgBallCP').append('svg');
+var svgBallCP = d3v3.select('#svgBall');
+/*svgBallCP.setAttribute("viewBox","0 0 1400 500");
+svgBallCP.setAttribute("preserveAspectRatio","xMidYMid meet");*/
+
 //var svgProbCP = d3v3.select('#svgProbCP').append('svg');
 
 //Create Clip Path
@@ -92,9 +95,12 @@ var rects = events.append('rect').attr('class', function(d){ return (d.name + ' 
 var texts = events.append('text').text(function(d){ 
   if (d.name != "four" && d.name != "five" && d.name != "three") {
     return "At least " + d.name + " appearance(s) in the bottom two";
-  } else {
+  } 
+  else {
       return d.name;
-    }}).attr('class', function(d){ return d.name + ' label'});
+    }})
+  .attr('class', function(d){ return d.name + ' label'})
+
 
 var circles = containerBallCP.append("g").attr("class", "ball")
 
@@ -187,7 +193,7 @@ function addBall(data, data2, ic){
   var circle = g.append('circle')
                 .attr('r', radius)
                 .attr('cy', function(){ return yScaleCP(0) })
-                .on("mouseover", function(d,i) { tipBall.show(d,i,this);}).on("mouseout", function() { tipBall.hide();});;
+                .on("mouseover", function(d,i) { tipBall.show(d,i,this);}).on("mouseout", function() { tipBall.hide();});
 
   pos.forEach(function(d, i){
     if(i === 0) return
@@ -331,17 +337,18 @@ function calcOverlap(index, perspective){
 
 //Draws SVG and elements according to width
 function drawCP() {
-  var w = d3v3.select('#svgBallCP').node().clientWidth;
-  var wProb = d3v3.select('#svgProbCP').node().clientWidth;
+  var w = 1400;
+  //var wProb = d3v3.select('#svgProbCP').node().clientWidth;
   var h = 500;
-  var hProb = 200;
+  //var hProb = 200;
   var padding = 20;
-
+  console.log(w);
   //Update svg size
-  svgBallCP.attr("width", w).attr("height", h).call(tipBall);
+  //svgBallCP.attr("width", w).attr("height", h).call(tipBall);
   //svgProbCP.attr("width", wProb).attr("height", hProb);
-
+/*svgBallCP.setAttribute("preserveAspectRatio","xMidYMid meet");*/
   //Update Clip Path
+  svgBallCP.call(tipBall);
   clipCP.attr("x", 0).attr("y", 0).attr("width", w-2*padding).attr("height", h-2*padding);
 
   //Update Container
@@ -353,8 +360,8 @@ function drawCP() {
   xWidthCP.range([0, (w - 2*padding)]);
   yScaleCP.range([0, (h-2*padding)]);
 
-  xScaleProbCP.rangeRoundBands([0, wProb - 2*padding], .5);
-  yScaleProbCP.range([hProb-2*padding, 0]);
+  //xScaleProbCP.rangeRoundBands([0, wProb - 2*padding], .5);
+  //yScaleProbCP.range([hProb-2*padding, 0]);
 
   //Update Axis
   //probAxis.attr("transform", "translate(" + 0 + "," + (hProb-2*padding+1) + ")").call(xAxis);
@@ -370,3 +377,17 @@ function add(a, b) {
 drawCP();
 start();
 });
+
+
+var ballchart = $("#svgBall"),
+    ballaspect = ballchart.width() / ballchart.height(),
+    ballcontainer = ballchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = ballcontainer.width();
+    ballchart.attr("width", targetWidth);
+    ballchart.attr("height", Math.round(targetWidth / ballaspect));
+}).trigger("resize");
+
+
+
+

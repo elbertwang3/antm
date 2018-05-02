@@ -29,7 +29,7 @@ parentsvg = d3.select("#earlybottomtwograph")
 var bottomtwotip = d3.select("#earlybottomtwo")
 		.append("div")
         .attr("class", "bubbletooltip")
-        .style("opacity", 1);
+        .style("opacity", 0);
 
 d3.csv("data/firstbottomtwo.csv", function(error, data) {
 	grouped_data = d3.nest()
@@ -203,11 +203,13 @@ d3.csv("data/firstbottomtwo.csv", function(error, data) {
       	}
       	else {
       		return d.key + "th"; }});
-
-	        
-
-
-	
-
-
 });
+
+var ebchart = $("#earlybottomtwograph"),
+    ebaspect = ebchart.width() / ebchart.height(),
+    ebcontainer = ebchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = ebcontainer.width();
+    ebchart.attr("width", targetWidth);
+    ebchart.attr("height", Math.round(targetWidth / ebaspect));
+}).trigger("resize");

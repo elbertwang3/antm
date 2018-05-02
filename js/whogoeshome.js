@@ -246,5 +246,14 @@ d3.csv('data/whogoeshome.csv', function(error,d) {
 	start();
 });
 
+var wghchart = $("#whogoeshomesvg"),
+    wghaspect = wghchart.width() / wghchart.height(),
+    wghcontainer = wghchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = wghcontainer.width();
+    wghchart.attr("width", targetWidth);
+    wghchart.attr("height", Math.round(targetWidth / wghaspect));
+}).trigger("resize");
+
 
 

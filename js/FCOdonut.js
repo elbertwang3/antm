@@ -182,6 +182,13 @@ d3.csv("data/allFCOs.csv", cast, function(error, data) {
         this._current = i(0);
         return function(t) { return arc(i(t)); };
     }
-   
-
 });
+
+var fdchart = $("#FCOdonutgraph"),
+    fdaspect = fdchart.width() / fdchart.height(),
+    fdcontainer = fdchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = fdcontainer.width();
+    fdchart.attr("width", targetWidth);
+    fdchart.attr("height", Math.round(targetWidth / fdaspect));
+}).trigger("resize");

@@ -54,7 +54,8 @@ d3.queue()
 function ready(error, us, d) {
 
   if (error) throw error;
-  //console.log(us)
+  console.log(us);
+  console.log(us.objects.states);
   //console.log(names);
   //console.log(d3.extent(d, function(d) { return +d.count}));
 
@@ -87,3 +88,12 @@ function ready(error, us, d) {
       .attr("class", "states")
       .attr("d", path);*/
 }
+
+var stchart = $("#states"),
+    staspect = stchart.width() / stchart.height(),
+    stcontainer = stchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = stcontainer.width();
+    stchart.attr("width", targetWidth);
+    stchart.attr("height", Math.round(targetWidth / staspect));
+}).trigger("resize");

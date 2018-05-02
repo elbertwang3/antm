@@ -150,5 +150,14 @@ function ready(error, d1, d2, data3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13,
 	    gs[i].append("g")
       		.call(d3.axisLeft(y));
 	}
-
 }
+
+var cgchart = $(".calloutgraphs"),
+    cgaspect = cgchart.width() / cgchart.height(),
+    cgcontainer = cgchart.parent();
+$(window).on("resize", function() {
+    var targetWidth = cgcontainer.width();
+    cgchart.attr("width", targetWidth);
+    cgchart.attr("height", Math.round(targetWidth / cgaspect));
+}).trigger("resize");
+

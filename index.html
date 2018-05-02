@@ -33,24 +33,26 @@
 			<div class="content">
 				<div class="article">
 					<p> TyTy's back, baby. After 22 <strike>seasons</strike> cycles of America's Next Top model, the CW network cancelled the long-running series at the end of 2015 due to dwindling ratings. When VH1 revived the series a year later, singer Rita Ora took over as head judge for cycle 23. But the show just wasn't the same. Tyra was the face and heart of the franchise, and fans <a href="images/rootingforyou.gif">begged for her to come back</a>. Now she's reprising her role as head judge for Cycle 24. In honor of her return, I've decided to comb through 23 cycles and 296 contestants worth of data, reliving every tearful exit and crowning of a new model along with them. </p>
-					<br>
-					<br>
-
+					
 					<p> In the beginning, ANTM seemed like an earnest attempt in launching the careers of <a href="images/undiscovered.gif">undiscovered supermodels</a>. However, over the course of 14 years, it's dubious whether ANTM <a href="http://gawker.com/5942709/americas-next-top-model-winner-caridee-english-describes-how-sucky-it-is-to-win-antm">has actually helped produce successful models</a>. Still, the show is such a staple of reality TV that it has become ingrained in pop culture. Every week, America tuned in to see what Tyra might <a href="images/tyrafaint.gif">do</a> <a href="images/tongue.gif">next</a> or what <a href="images/smize.gif">new</a> <a href="images/bootytooch.gif">word</a> she might make up. But part of the original appeal of the show was watching tall, gangly ugly ducklings transform into models in a matter of weeks. Each week, contestants participated in challenges and photoshoots, and their performance determined whether they stayed or went home. Most importantly, they also received a call-out order at panel, providing me with all the quantitative data I need to figure out exactly what it takes to be <a href="images/ontop.gif">on top</a>. </p>
 						
 					<h3> A Survey </h3>
 					<p> Contestants usually apply to the show through by sending in a video audition or attending a casting call, but some were scouted from Myspace, at a homeless shelter, and even from an ice cream truck. However they were found, their fates all fall into neatly defined categories. </p>
 
-					<div class="graph" id="bubblesgraph">
-						<h5> The outcome of every ANTM contestant</h5>
+					<h5> The outcome of every ANTM contestant</h5>
 						<p> Most contestants end up being eliminated at panel, which at the time may seem like the end of the world and their modeling careers, but as they say, <a href="https://www.youtube.com/watch?v=X_POQOE-kyY"> one end is a new beginning</a>. Despite some contestants <a href="https://youtu.be/lKd5heULJGY?t=166">vowing to win the competition</a>, only 7.8% of the contestants make it out on top. Cycle 1's Elyse <a href="images/modelingcontract.gif">put it best</a>. Others were not so lucky. Some were eliminated in a challenge outside of panel, Cycle 21's Romeo was disqualified for <a href="images/headbump.gif">a physical altercation</a>, and Cycle 17's Angelea won her cycle only to be disqualified for her past as an escort. Others even quit the competition, deciding that modeling wasn't for them or because they <a href="https://www.youtube.com/watch?v=220PxtwO9QI">refused a makeover</a>.
-						<svg id="bubbles" width="500" height="360"></svg>	
+					<div class="graph" id="bubblesgraph" style="max-width: 500px; max-height: 360px; margin: 0 auto;">
+						
+						<svg id="bubbles" width="500" height="360"   viewBox="0 0 500 360"
+						  preserveAspectRatio="xMidYMid meet"></svg>	
 
 					</div>
-					<div class="graph" id="statesgraph">
-						<h5> Where the girls come from </h5>
+					<h5> Where the contestants come from </h5>
 						<p> This is <i>America's</i> Next Top Model, after all. California is the most represented state overall, but rural North Dakota and Arkansas have had two winners apiece. Almost all states have been represented on the show, barring Maine, Mississippi, Montana, Nebraska, New Hampshire, Rhode Island, Utah, Vermont, West Virginia, and Wyoming. Half the contestants on Cycle 18: British Invasion were from the UK, and they have been omitted.</p>
-						<svg id="states" width="1000" height="650"></svg>
+					<div class="graph" id="statesgraph" style="max-width: 1000px; max-height: 650px; margin: 0 auto;">
+						
+						<svg id="states" width="1000" height="650"   viewBox="0 0 1000 650"
+						  preserveAspectRatio="xMidYMid meet"></svg>
 				
 					</div>
 
@@ -59,22 +61,26 @@
 					<h5> The Journey to the Top </h5>
 					<p> I wanted to visualize each contestant's journey during their cycle by mapping a line to their call-out order from week to week. Performance at each week's photoshoot usually carries the most weight in determining a contestant's call-out order, but sometimes the judges consider external factors--such as confidence or how badly they want to win the competition--as reasons to rank someone higher or save someone from elimination. If a line is cut short, that contestant was eliminated from the competition that week.</p>
 					
-					<div class="graph" id="calloutgraph">
+					<div class="graph" id="calloutgraph" style="max-width: 1400px; margin: 0 auto">
 
 					</div>
 					<p> In some cycles, the obvious front-runner won the competition, like Jourdan from Cycle 20 or India from Cycle 23. Other winners had a rockier road to the top, like Lisa from Cycle 17 or Brittani from Cycle 16. Some showed steady improvement throughout their cycle, like Saleisha from Cycle 9 or Nicole from Cycle 5, which is what Tyra thinks the show is all about. Each line tells its own story. </p>
 					<h3> The First Call-out Advantage </h3>
 					<p> Each week, the judges award the first call-out to the contestant with the best photo that week. Some contestants bumble their way through the photoshoot only to get lucky with an amazing shot, while other contestants solidify their lead by taking consistently good photos from week to week.</p>
-					<div class="graph" id="mostFCO">
-						<h5> How the girl(s) with the most first call-outs of their cycle placed </h5>
+					<h5> How the girl(s) with the most first call-outs of their cycle placed </h5>
 						<p> Consistent first-callouts are a sure sign that a contestant is doing well in the competition, so I wanted to explore whether having the most first call-outs in a particular cycle would guarantee the win. Below is a graph of the 34 contestants with the most first call-outs of their respective cycles. Some cycles had ties, and all tied contestants have been included in those cases, which is why more than 23 are shown.</p>
-						<svg id="mostFCOgraph" width='800' height='525'></svg>
-						<p>It turns out that less than half the time (11 out of 23 cycles), the winner also had the most call-outs of the cycle. My theory is that while contestants need to do well at photoshoots to stay in the competition, the winner often isn't the one who takes the best photos, but rather the one who represents the ANTM brand the best. Sometimes, a superior performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant may also sway the judges toward crowning an underdog as the winner. </p>
+					<div class="graph" id="mostFCO" style="max-width: 800px; max-height: 525px; margin: 0 auto;">
+						
+						<svg id="mostFCOgraph" width='800' height='525'   viewBox="0 0 800 525"
+						  preserveAspectRatio="xMidYMid meet">></svg>
+						
 					</div>
-					<div class="graph" id="FCOdonut">
-						<h5> How many first call-outs does it take to win? </h5>
+					<p>It turns out that less than half the time (11 out of 23 cycles), the winner also had the most call-outs of the cycle. My theory is that while contestants need to do well at photoshoots to stay in the competition, the winner often isn't the one who takes the best photos, but rather the one who represents the ANTM brand the best. Sometimes, a superior performance at the final runway show or some <a href="https://www.youtube.com/watch?v=lYCpEkw0LVM">je ne sais quoi</a> about a contestant may also sway the judges toward crowning an underdog as the winner. </p>
+					<h5> How many first call-outs does it take to win? </h5>
 						<p> Discovering that the winner didn't always have the most first call-outs, I wanted to see how strong of an effect having x first-callouts would have on a contestant's final placement. Below, I used each donut graph to represent all the contestants with x number of first call-outs. Each slice represents a placement, the size of the slice represents the fraction of contesteants with that specific placement, and the darker the color of each slice, the farther those contestants made it in the competition. I have omitted the decision between the winner and the runner-up as a first call-out. </p>
 
+					<div class="graph" id="FCOdonut" style="max-width: 900px; max-height: 450px; margin: 0 auto;">
+						
 						
 						<form>
 							<label><input type="radio" name="dataset" id="dataset" value="0" checked> No first callouts</label>
@@ -86,46 +92,54 @@
 							<label><input type="radio" name="dataset" id="dataset" value="6"> Six </label>
 						</form>
 
-						<svg id="FCOdonutgraph" width='900' height='450'></svg>
-						<p> There has been no winner without at least one callout. One first call-out is enough for the judges to notice the potential in a contestant, but it's often not enough to win. Three first-callouts and a contestant is almost guaranteed to get a spot in the final three. Joanie from Cycle 6 and Anya from Cycle 10 had <i> five</i> first call-outs a piece, but still ended up as runner-ups of their respective cycles. Ann Ward from Cycle 16 took her cycle by storm, earning a record five consecutive first call-outs in the first five episodes, and ended up with six total. She is the only one to have earned six first call-outs (not counting the finale), and she won her cycle convincigly. </p>
+						<svg id="FCOdonutgraph" width='900' height='450'   viewBox="0 0 900 450"
+						  preserveAspectRatio="xMidYMid meet"></svg>
+						
 					</div>
-					<div class="graph" id="whogoeshome">
-						<h5> Who goes home? </h5>
+					<p> There has been no winner without at least one callout. One first call-out is enough for the judges to notice the potential in a contestant, but it's often not enough to win. Three first-callouts and a contestant is almost guaranteed to get a spot in the final three. Joanie from Cycle 6 and Anya from Cycle 10 had <i> five</i> first call-outs a piece, but still ended up as runner-ups of their respective cycles. Ann Ward from Cycle 16 took her cycle by storm, earning a record five consecutive first call-outs in the first five episodes, and ended up with six total. She is the only one to have earned six first call-outs (not counting the finale), and she won her cycle convincigly. </p>
+					<h5> Who goes home? </h5>
 						<p> I decided to test whether average call-out order had an effect on which of the two bottom two contestants would be eliminated in any given week; namely, whether having a better average call-out would save a contestant from elimination. I included 240 eliminations from all the cycles (I ommitted the first elimination of each cycle because contestants don't have a prior average call-out in the first week), and these are the results: contestants who had a better (lower numerical value) call-out order were saved 55.4% of the time, whereas contestants with the worse call-out average was saved 37.9% of the time. In the rest of the cases, contestants had an equal callout average at the time of elimination. Mouse over each bubble to see the contestants and their call-out averages at the time of their bottom two appearance. </p>
+					<div class="graph" id="whogoeshome" style="max-width: 960px; max-height: 500px; margin: 0 auto;">
+						
 
 
-						<svg id="whogoeshomesvg" width='960' height='500'></svg>
-						<p> Although having a better average call-out is definitely an advantage when you're in the bottom two, it had less of an effect than I had expected. Sometimes the judges may see  potential in a contestant that has yet to be unlocked, saving that contestant even though they had a poorer past performance out of the two. </p>
-
-						<p> The green bubbles on the left can be interpreted as "unfair" eliminations--especially the ones with a large difference between averages. In Cycle 7, Jaeda and A.J. landed in the bottom two in the 6th episode. Although Jaeda had an average call-out of 7.75 and AJ an average of 3, A.J. ended up going home. Jaeda would end up landing in the bottom two a total of four times. </p>
+						<svg id="whogoeshomesvg" width='960' height='500'  viewBox="0 0 960 500"
+						  preserveAspectRatio="xMidYMid meet"></svg>
+						
 					</div>
 					
-					
+					<p> Although having a better average call-out is definitely an advantage when you're in the bottom two, it had less of an effect than I had expected. Sometimes the judges may see  potential in a contestant that has yet to be unlocked, saving that contestant even though they had a poorer past performance out of the two. </p>
+
+						<p> The orange bubbles on the left can be interpreted as "unfair" eliminations--especially the ones with a large difference between averages. In Cycle 7, Jaeda and A.J. landed in the bottom two in the 6th episode. Although Jaeda had an average call-out of 7.75 and AJ an average of 3, A.J. ended up going home. Jaeda would end up landing in the bottom two a total of four times. </p>
 
 					<h3> The Dreaded Bottom Two </h3>
-					<div class="graph" id="earlybottomtwo">
-						<h5> Is an early bottom two a death sentence? </h5>
+					<h5> Is an early bottom two a death sentence? </h5>
 						<p> In any reality TV competition, the worst thing that can happen is to be eliminated first. That, or being <a href="https://www.youtube.com/watch?v=m6Shpn5WCFs">publicly humiliated by Tyra on national television</a>. The contestants depicted below were in the bottom two the first week of competition, on the brink of elimination, but saved. I wanted to explore whether they ended up being eliminated mere episodes later or whether they lasted in the competition, demonstrating if it was possible for the show to turn amateurs into models. An early bottom two is hard to interpret--it could either signal a model who lacks natural talent and is on their way out, or a model with potential waiting to be discovered in the coming weeks. </p>
-						<svg id="earlybottomtwograph" width='800' height='525'></svg>
+					<div class="graph" id="earlybottomtwo" style="max-width: 800px; max-height: 525px; margin: 0 auto;">
 						
-						<p> In 17 out of 23 of the cycles, the contestant saved in the first bottom two ended up being eliminated relatively early on, making it seem difficult to recover from early mistakes. Only 6 out of 23 of the first bottom two contestants made it to the international destination, placing 6th or better. Two--Shannon from Cycle 2 and Melrose from Cycle 7--made it to the finale and placed second, inches away from the crown. Still, while an early bottom two certainly isn't a death sentence, a consecutive bottom two is. Out of 81 consecutive bottom two appearances, only 26 survive the second bottom two, a 32% chance of survival. Only two models have survived <i>three</i> consecutive bottom twos: Erin from Cycle 13 and Devin from Cycle 22.</p>
+						<svg id="earlybottomtwograph" width='800' height='525'  viewBox="0 0 800 525"
+						  preserveAspectRatio="xMidYMid meet"></svg>
+						
+						
 					</div>
+					<p> In 17 out of 23 of the cycles, the contestant saved in the first bottom two ended up being eliminated relatively early on, making it seem difficult to recover from early mistakes. Only 6 out of 23 of the first bottom two contestants made it to the international destination, placing 6th or better. Two--Shannon from Cycle 2 and Melrose from Cycle 7--made it to the finale and placed second, inches away from the crown. Still, while an early bottom two certainly isn't a death sentence, a consecutive bottom two is. Out of 81 consecutive bottom two appearances, only 26 survive the second bottom two, a 32% chance of survival. Only two models have survived <i>three</i> consecutive bottom twos: Erin from Cycle 13 and Devin from Cycle 22.</p>
 					<div class="graph" id="bottomtwograph">
 						<h5> Stuck in the bottom two </h5>
-						<p> Ah, the dreaded bottom two. Some contestants just can't seem to get out of it, taking uninspiring and dead-in-the-eyes photos from week to week. But the judges always find some reason to save them. For them to stay in the competition, someone else must've committed the cardinal sins of not wanting to be here enough, or not looking like a model enough, or my favorite, having confidence mistaken for arrogance.
-						<div id="svgBallCP"></div>
+						<p> Ah, the dreaded bottom two. Some contestants just can't seem to get out of it, taking uninspiring and dead-in-the-eyes photos from week to week. But the judges always find some reason to save them. For them to stay in the competition, someone else must've committed a cardinal sin of ANTM: not wanting to be here enough, not looking like a model enough, or my favorite, having confidence mistaken for arrogance.</p>
+						<div id="svgBallCP" style="max-width: 1400px; max-height: 500px; margin: 0 auto;"><svg id="svgBall" width='1400' height='500'  viewBox="0 0 1400 500"
+						  preserveAspectRatio="xMidYMid meet"></svg></div>
 						<!--<div id="ballControl">
 							<div class="btn btn-default ballBtns" id="start" style="display: none;">Start Ball Drop</div>
 							<div class="btn btn-default ballBtns" id="stop" style="display: inline-block;">Stop Ball Drop</div>
 						</div>-->
-						<div id="svgProbCP"></div>
-						<br>
-						<br>
-						<p>
+						
+					
+						
+						
+					</div>
+					<p>
 							Most contestants--94%--end up in the bottom two at least once. The contestants that haven't either won the competition or made it to the final two without slipping, but most who have never been in the bottom two quit the competition before they could. The winners who never landed in the bottom two are Jaslene (Cycle 8), McKey (Cycle 11), Nicole (Cyclce 13), Krista (Cycle 14), Sophie (Cycle 18), Jourdan (Cycle 20), and India (Cycle 23). Of everyone else, almost half survive their first bottom two, but after that, most contestants are cut by their third appearance. Three special contestants landed in the bottom two <i>five</i> times before packing their bags: they are Ann from Cycle 3, Bre from Cycle 5, and Jade from Cycle 5.
 						</p>
-					</div>
-
 
 					<h3> What I took away </h3>
 					<p> When Cycle 24 rolls around and you're trying to predict the next winner, keep some things in mind. One first call-out can make the judges notice a contestant's potential and buy them a couple weeks in the competition, and the contestant with the most first call-outs is almost guaranteed a spot in the final three but is not necessarily the winner. The winner is usually either an obvious frontrunner, or in the case that there isn't one, the contestant that shows the most improvement from week to week. For contestants that survive an early bottom two, some could soon be on their way out, and others may last a little longer but rarely until the end. Contestants who land in consecutive bottom twos are almost always eliminated in the second one, as are contestants who land in the bottom two at least three times. After that, it's anyone's guess. Anyone but Tyra, that is. <a href="https://twitter.com/tyrabanks/status/842495780657143808?lang=en">Mama's back</a>.
