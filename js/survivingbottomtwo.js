@@ -337,9 +337,9 @@ function calcOverlap(index, perspective){
 
 //Draws SVG and elements according to width
 function drawCP() {
-  var w = 1400;
+  var w = window.innerHeight*2.5;
   //var wProb = d3v3.select('#svgProbCP').node().clientWidth;
-  var h = 500;
+  var h = window.innerHeight*2.5;
   //var hProb = 200;
   var padding = 20;
   console.log(w);
@@ -379,14 +379,14 @@ start();
 });
 
 
-var ballchart = $("#svgBall"),
+/*var ballchart = $("#svgBall"),
     ballaspect = ballchart.width() / ballchart.height(),
     ballcontainer = ballchart.parent();
 $(window).on("resize", function() {
-    var targetWidth = ballcontainer.width();
+    var targetWidth = 700
     ballchart.attr("width", targetWidth);
     ballchart.attr("height", Math.round(targetWidth / ballaspect));
-}).trigger("resize");
+}).trigger("resize");*/
 
 
 
